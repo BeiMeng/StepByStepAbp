@@ -3,12 +3,12 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace BeiDream.SbsAbp.Demo.Tasks
+namespace BeiDream.SbsAbp.Demo.DemoTasks
 {
     /// <summary>
     /// 任务
     /// </summary>
-    public class Task: FullAuditedEntity<Guid>
+    public class DemoTask: FullAuditedEntity<Guid>
     {
         /// <summary>
         /// 任务名称

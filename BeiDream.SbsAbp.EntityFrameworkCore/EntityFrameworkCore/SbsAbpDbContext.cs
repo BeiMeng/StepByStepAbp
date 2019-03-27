@@ -1,4 +1,5 @@
 ﻿using Abp.EntityFrameworkCore;
+using BeiDream.SbsAbp.Demo.DemoTasks;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ namespace BeiDream.SbsAbp.EntityFrameworkCore
 {
     public class SbsAbpDbContext : AbpDbContext
     {
-        public DbSet<Task> Tasks { get; set; }
+        public DbSet<DemoTask> Tasks { get; set; }
         public SbsAbpDbContext(DbContextOptions options) : base(options)
         {
 
