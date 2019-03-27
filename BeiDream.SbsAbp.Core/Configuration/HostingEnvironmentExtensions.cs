@@ -11,7 +11,7 @@ namespace BeiDream.SbsAbp.Configuration
     {
         public static IConfigurationRoot GetAppConfiguration(this IHostingEnvironment env)
         {
-            return AppConfigurations.Get(env.ContentRootPath, env.EnvironmentName, env.IsDevelopment());
+            return AppConfigurations.Get(env.ContentRootPath, env.EnvironmentName, false);
         }
     }
 }

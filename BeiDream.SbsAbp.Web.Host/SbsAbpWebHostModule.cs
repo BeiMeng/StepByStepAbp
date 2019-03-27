@@ -1,4 +1,5 @@
-﻿using Abp.AspNetCore.Configuration;
+﻿using Abp.AspNetCore;
+using Abp.AspNetCore.Configuration;
 using Abp.Modules;
 using Abp.Reflection.Extensions;
 using BeiDream.SbsAbp.Configuration;
@@ -14,7 +15,8 @@ namespace BeiDream.SbsAbp.Web
 {
     [DependsOn(
         typeof(SbsAbpApplicationModule),
-        typeof(SbsAbpEntityFrameworkCoreModule))]
+        typeof(SbsAbpEntityFrameworkCoreModule),
+         typeof(AbpAspNetCoreModule))]
     public class SbsAbpWebHostModule : AbpModule
     {
         private readonly IHostingEnvironment _env;
