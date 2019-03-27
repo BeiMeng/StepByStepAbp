@@ -12,7 +12,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\AbpFramework\Abp.AspNetCore\Abp.AspNetCore.csproj" />
     <ProjectReference Include="..\BeiDream.SbsAbp.Application\BeiDream.SbsAbp.Application.csproj" />
+    <ProjectReference Include="..\BeiDream.SbsAbp.EntityFrameworkCore\BeiDream.SbsAbp.EntityFrameworkCore.csproj" />
   </ItemGroup>
 
 </Project>
