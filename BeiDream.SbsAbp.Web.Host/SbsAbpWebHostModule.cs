@@ -29,8 +29,10 @@ namespace BeiDream.SbsAbp.Web
         }
         public override void PreInitialize()
         {
-            //Configuration.DefaultNameOrConnectionString = _appConfiguration.GetConnectionString(SbsAbpConsts.ConnectionStringName);
+            //从appsettings.json获取数据库链接字符串并配置为默认链接
+            Configuration.DefaultNameOrConnectionString = _appConfiguration.GetConnectionString(SbsAbpConsts.ConnectionStringName);
 
+            //将application层 动态生成 webapi
             Configuration.Modules.AbpAspNetCore()
                 .CreateControllersForAppServices(
                     typeof(SbsAbpApplicationModule).GetAssembly()
