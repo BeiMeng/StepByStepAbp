@@ -10,7 +10,7 @@ namespace BeiDream.SbsAbp.EntityFrameworkCore
 {
     public class SbsAbpDbContext : AbpDbContext
     {
-        public DbSet<DemoTask> Tasks { get; set; }
+        public DbSet<DemoTask> DemoTasks { get; set; }
         public SbsAbpDbContext(DbContextOptions options) : base(options)
         {
 

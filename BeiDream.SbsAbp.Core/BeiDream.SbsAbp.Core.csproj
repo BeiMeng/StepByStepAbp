@@ -13,6 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\AbpFramework\Abp.AutoMapper\Abp.AutoMapper.csproj" />
     <ProjectReference Include="..\AbpFramework\Abp\Abp.csproj" />
   </ItemGroup>
 
