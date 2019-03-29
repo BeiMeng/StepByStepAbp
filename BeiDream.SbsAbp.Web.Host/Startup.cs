@@ -11,6 +11,8 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Abp.AspNetCore;
 using Swashbuckle.AspNetCore.Swagger;
+using Castle.Facilities.Logging;
+using Abp.Castle.Logging.Log4Net;
 
 namespace BeiDream.SbsAbp.Web.Host
 {
@@ -29,18 +31,19 @@ namespace BeiDream.SbsAbp.Web.Host
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             // Register the Swagger generator, defining 1 or more Swagger documents
-            services.AddSwaggerGen(c =>
+            services.AddSwaggerGen(options =>
             {
-                c.SwaggerDoc("v1", new Info { Title = "My API", Version = "v1" });
+                options.SwaggerDoc("v1", new Info { Title = "My API", Version = "v1" });
+                options.DocInclusionPredicate((docName, description) => true);  //swagger 显示动态生成的appliction层api
             });
 
             //Configure Abp and Dependency Injection
             return services.AddAbp<SbsAbpWebHostModule>(options =>
             {
                 //Configure Log4Net logging
-                //options.IocManager.IocContainer.AddFacility<LoggingFacility>(
-                //    f => f.UseAbpLog4Net().WithConfig("log4net.config")
-                //);
+                options.IocManager.IocContainer.AddFacility<LoggingFacility>(
+                    f => f.UseAbpLog4Net().WithConfig("log4net.config")
+                );
             });
         }
 
@@ -55,7 +58,12 @@ namespace BeiDream.SbsAbp.Web.Host
             }
             app.UseStaticFiles();
 
-            app.UseMvc();
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(
+                    name: "default",
+                    template: "{controller=Home}/{action=Index}/{id?}");
+            });
 
             // Enable middleware to serve generated Swagger as a JSON endpoint.
             app.UseSwagger();

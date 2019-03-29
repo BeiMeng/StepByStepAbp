@@ -1,0 +1,151 @@
+DEBUG 2019-03-29 09:59:40,099 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2019-03-29 09:59:41,449 [1    ] Abp.Modules.AbpModuleManager             - Found 9 ABP modules in total.
+DEBUG 2019-03-29 09:59:41,458 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: BeiDream.SbsAbp.Web.SbsAbpWebHostModule, BeiDream.SbsAbp.Web.Host, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-03-29 09:59:41,461 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: BeiDream.SbsAbp.SbsAbpApplicationModule, BeiDream.SbsAbp.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-03-29 09:59:41,461 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: BeiDream.SbsAbp.SbsAbpCoreModule, BeiDream.SbsAbp.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-03-29 09:59:41,501 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: BeiDream.SbsAbp.EntityFrameworkCore.SbsAbpEntityFrameworkCoreModule, BeiDream.SbsAbp.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-03-29 09:59:41,501 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-03-29 09:59:41,502 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-03-29 09:59:41,503 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-03-29 09:59:41,503 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.AbpAspNetCoreModule, Abp.AspNetCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-03-29 09:59:41,503 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-03-29 09:59:41,507 [1    ] Abp.Modules.AbpModuleManager             - 9 modules loaded.
+DEBUG 2019-03-29 09:59:43,292 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: BeiDream.SbsAbp.EntityFrameworkCore.SbsAbpDbContext, BeiDream.SbsAbp.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-03-29 09:59:45,551 [1    ] Abp.Localization.LocalizationManager     - Initializing 2 localization sources.
+DEBUG 2019-03-29 09:59:45,677 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2019-03-29 09:59:45,706 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2019-03-29 09:59:46,133 [1    ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Abp.BackgroundJobs.BackgroundJobManager
+INFO  2019-03-29 09:59:51,163 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:54642/api/values  
+INFO  2019-03-29 09:59:51,163 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 DEBUG http://localhost:54642/  0
+INFO  2019-03-29 09:59:51,503 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 317.6228ms 200 
+WARN  2019-03-29 09:59:51,749 [6    ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-03-29 09:59:51,750 [6    ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-03-29 09:59:51,823 [6    ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'BeiDream.SbsAbp.Web.Host.Controllers.ValuesController.Get (BeiDream.SbsAbp.Web.Host)'
+INFO  2019-03-29 09:59:51,968 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Get", controller = "Values", area = ""}. Executing action BeiDream.SbsAbp.Web.Host.Controllers.ValuesController.Get (BeiDream.SbsAbp.Web.Host)
+ERROR 2019-03-29 09:59:51,983 [6    ] Mvc.ExceptionHandling.AbpExceptionFilter - No component for supporting the service BeiDream.SbsAbp.Web.Host.Controllers.ValuesController was found
+Castle.MicroKernel.ComponentNotFoundException: No component for supporting the service BeiDream.SbsAbp.Web.Host.Controllers.ValuesController was found
+   at Castle.MicroKernel.DefaultKernel.Castle.MicroKernel.IKernelInternal.Resolve(Type service, IDictionary arguments, IReleasePolicy policy, Boolean ignoreParentContext)
+   at Castle.MicroKernel.DefaultKernel.Resolve(Type service, IDictionary arguments)
+   at Castle.Windsor.MsDependencyInjection.ScopedWindsorServiceProvider.GetServiceInternal(Type serviceType, Boolean isOptional) in D:\Github\castle-windsor-ms-adapter\src\Castle.Windsor.MsDependencyInjection\ScopedWindsorServiceProvider.cs:line 55
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.AspNetCore.Mvc.Controllers.ServiceBasedControllerActivator.Create(ControllerContext actionContext)
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass5_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeInnerFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeNextExceptionFilterAsync()
+INFO  2019-03-29 09:59:52,743 [6    ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-03-29 09:59:53,003 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action BeiDream.SbsAbp.Web.Host.Controllers.ValuesController.Get (BeiDream.SbsAbp.Web.Host) in 1032.7779ms
+INFO  2019-03-29 09:59:53,005 [6    ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'BeiDream.SbsAbp.Web.Host.Controllers.ValuesController.Get (BeiDream.SbsAbp.Web.Host)'
+INFO  2019-03-29 09:59:53,011 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 1858.4101ms 500 application/json; charset=utf-8
+INFO  2019-03-29 09:59:53,830 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:54642/favicon.ico  
+WARN  2019-03-29 09:59:53,832 [7    ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-03-29 09:59:53,833 [7    ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-03-29 09:59:53,852 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 21.6713ms 404 
+DEBUG 2019-03-29 10:09:14,668 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2019-03-29 10:09:14,723 [1    ] Abp.Modules.AbpModuleManager             - Found 9 ABP modules in total.
+DEBUG 2019-03-29 10:09:14,735 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: BeiDream.SbsAbp.Web.SbsAbpWebHostModule, BeiDream.SbsAbp.Web.Host, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-03-29 10:09:14,738 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: BeiDream.SbsAbp.SbsAbpApplicationModule, BeiDream.SbsAbp.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-03-29 10:09:14,738 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: BeiDream.SbsAbp.SbsAbpCoreModule, BeiDream.SbsAbp.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-03-29 10:09:14,738 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: BeiDream.SbsAbp.EntityFrameworkCore.SbsAbpEntityFrameworkCoreModule, BeiDream.SbsAbp.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-03-29 10:09:14,739 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-03-29 10:09:14,739 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-03-29 10:09:14,739 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-03-29 10:09:14,739 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.AbpAspNetCoreModule, Abp.AspNetCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-03-29 10:09:14,740 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-03-29 10:09:14,742 [1    ] Abp.Modules.AbpModuleManager             - 9 modules loaded.
+DEBUG 2019-03-29 10:09:14,916 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: BeiDream.SbsAbp.EntityFrameworkCore.SbsAbpDbContext, BeiDream.SbsAbp.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-03-29 10:09:15,055 [1    ] Abp.Localization.LocalizationManager     - Initializing 2 localization sources.
+DEBUG 2019-03-29 10:09:15,112 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2019-03-29 10:09:15,142 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2019-03-29 10:09:15,336 [1    ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Abp.BackgroundJobs.BackgroundJobManager
+INFO  2019-03-29 10:09:15,793 [8    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:54642/api/values  
+INFO  2019-03-29 10:09:15,793 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 DEBUG http://localhost:54642/  0
+INFO  2019-03-29 10:09:15,820 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 21.0031ms 200 
+WARN  2019-03-29 10:09:15,874 [8    ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-03-29 10:09:15,875 [8    ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-03-29 10:09:15,912 [8    ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'BeiDream.SbsAbp.Web.Host.Controllers.ValuesController.Get (BeiDream.SbsAbp.Web.Host)'
+INFO  2019-03-29 10:09:15,930 [8    ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Get", controller = "Values", area = ""}. Executing action BeiDream.SbsAbp.Web.Host.Controllers.ValuesController.Get (BeiDream.SbsAbp.Web.Host)
+ERROR 2019-03-29 10:09:15,945 [8    ] Mvc.ExceptionHandling.AbpExceptionFilter - No component for supporting the service BeiDream.SbsAbp.Web.Host.Controllers.ValuesController was found
+Castle.MicroKernel.ComponentNotFoundException: No component for supporting the service BeiDream.SbsAbp.Web.Host.Controllers.ValuesController was found
+   at Castle.MicroKernel.DefaultKernel.Castle.MicroKernel.IKernelInternal.Resolve(Type service, IDictionary arguments, IReleasePolicy policy, Boolean ignoreParentContext)
+   at Castle.MicroKernel.DefaultKernel.Resolve(Type service, IDictionary arguments)
+   at Castle.Windsor.MsDependencyInjection.ScopedWindsorServiceProvider.GetServiceInternal(Type serviceType, Boolean isOptional) in D:\Github\castle-windsor-ms-adapter\src\Castle.Windsor.MsDependencyInjection\ScopedWindsorServiceProvider.cs:line 55
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.AspNetCore.Mvc.Controllers.ServiceBasedControllerActivator.Create(ControllerContext actionContext)
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass5_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeInnerFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeNextExceptionFilterAsync()
+INFO  2019-03-29 10:09:15,995 [8    ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-03-29 10:09:16,121 [8    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action BeiDream.SbsAbp.Web.Host.Controllers.ValuesController.Get (BeiDream.SbsAbp.Web.Host) in 185.407ms
+INFO  2019-03-29 10:09:16,124 [8    ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'BeiDream.SbsAbp.Web.Host.Controllers.ValuesController.Get (BeiDream.SbsAbp.Web.Host)'
+INFO  2019-03-29 10:09:16,129 [8    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 339.887ms 500 application/json; charset=utf-8
+DEBUG 2019-03-29 10:09:34,093 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2019-03-29 10:09:34,215 [1    ] Abp.Modules.AbpModuleManager             - Found 9 ABP modules in total.
+DEBUG 2019-03-29 10:09:34,238 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: BeiDream.SbsAbp.Web.SbsAbpWebHostModule, BeiDream.SbsAbp.Web.Host, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-03-29 10:09:34,242 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: BeiDream.SbsAbp.SbsAbpApplicationModule, BeiDream.SbsAbp.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-03-29 10:09:34,243 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: BeiDream.SbsAbp.SbsAbpCoreModule, BeiDream.SbsAbp.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-03-29 10:09:34,243 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: BeiDream.SbsAbp.EntityFrameworkCore.SbsAbpEntityFrameworkCoreModule, BeiDream.SbsAbp.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-03-29 10:09:34,244 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-03-29 10:09:34,245 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-03-29 10:09:34,245 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-03-29 10:09:34,246 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.AbpAspNetCoreModule, Abp.AspNetCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-03-29 10:09:34,247 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-03-29 10:09:34,250 [1    ] Abp.Modules.AbpModuleManager             - 9 modules loaded.
+DEBUG 2019-03-29 10:09:34,572 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: BeiDream.SbsAbp.EntityFrameworkCore.SbsAbpDbContext, BeiDream.SbsAbp.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-03-29 10:09:34,722 [1    ] Abp.Localization.LocalizationManager     - Initializing 2 localization sources.
+DEBUG 2019-03-29 10:09:34,775 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2019-03-29 10:09:34,801 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2019-03-29 10:09:34,974 [1    ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Abp.BackgroundJobs.BackgroundJobManager
+INFO  2019-03-29 10:09:35,599 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:54642/  
+INFO  2019-03-29 10:09:35,599 [8    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 DEBUG http://localhost:54642/  0
+INFO  2019-03-29 10:09:35,625 [8    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 21.6239ms 200 
+WARN  2019-03-29 10:09:35,674 [7    ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-03-29 10:09:35,675 [7    ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-03-29 10:09:35,731 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 135.3722ms 404 
+INFO  2019-03-29 10:09:56,967 [8    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:54642/swagger/index.html  
+WARN  2019-03-29 10:09:56,969 [8    ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-03-29 10:09:56,970 [8    ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-03-29 10:09:57,159 [8    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 191.8296ms 200 text/html
+INFO  2019-03-29 10:10:08,648 [8    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:54642/swagger/v1/swagger.json  
+WARN  2019-03-29 10:10:08,651 [8    ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-03-29 10:10:08,653 [8    ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-03-29 10:10:08,744 [8    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 96.5833ms 200 application/json;charset=utf-8
+DEBUG 2019-03-29 10:11:11,250 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2019-03-29 10:11:11,306 [1    ] Abp.Modules.AbpModuleManager             - Found 9 ABP modules in total.
+DEBUG 2019-03-29 10:11:11,321 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: BeiDream.SbsAbp.Web.SbsAbpWebHostModule, BeiDream.SbsAbp.Web.Host, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-03-29 10:11:11,323 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: BeiDream.SbsAbp.SbsAbpApplicationModule, BeiDream.SbsAbp.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-03-29 10:11:11,324 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: BeiDream.SbsAbp.SbsAbpCoreModule, BeiDream.SbsAbp.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-03-29 10:11:11,325 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: BeiDream.SbsAbp.EntityFrameworkCore.SbsAbpEntityFrameworkCoreModule, BeiDream.SbsAbp.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-03-29 10:11:11,326 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-03-29 10:11:11,326 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-03-29 10:11:11,326 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-03-29 10:11:11,326 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.AbpAspNetCoreModule, Abp.AspNetCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-03-29 10:11:11,327 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-03-29 10:11:11,329 [1    ] Abp.Modules.AbpModuleManager             - 9 modules loaded.
+DEBUG 2019-03-29 10:11:11,496 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: BeiDream.SbsAbp.EntityFrameworkCore.SbsAbpDbContext, BeiDream.SbsAbp.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-03-29 10:11:11,638 [1    ] Abp.Localization.LocalizationManager     - Initializing 2 localization sources.
+DEBUG 2019-03-29 10:11:11,697 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2019-03-29 10:11:11,724 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2019-03-29 10:11:11,921 [1    ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Abp.BackgroundJobs.BackgroundJobManager
+INFO  2019-03-29 10:11:12,401 [9    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:54642/  
+INFO  2019-03-29 10:11:12,401 [8    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 DEBUG http://localhost:54642/  0
+INFO  2019-03-29 10:11:12,427 [8    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 25.7547ms 200 
+WARN  2019-03-29 10:11:12,480 [9    ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-03-29 10:11:12,484 [9    ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-03-29 10:11:12,547 [9    ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'BeiDream.SbsAbp.Web.Host.Controllers.HomeController.Index (BeiDream.SbsAbp.Web.Host)'
+INFO  2019-03-29 10:11:12,589 [9    ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Index", controller = "Home", area = ""}. Executing action BeiDream.SbsAbp.Web.Host.Controllers.HomeController.Index (BeiDream.SbsAbp.Web.Host)
+INFO  2019-03-29 10:11:12,913 [9    ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method BeiDream.SbsAbp.Web.Host.Controllers.HomeController.Index (BeiDream.SbsAbp.Web.Host) - Validation state: Valid
+INFO  2019-03-29 10:11:12,922 [9    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method BeiDream.SbsAbp.Web.Host.Controllers.HomeController.Index (BeiDream.SbsAbp.Web.Host), returned result Microsoft.AspNetCore.Mvc.RedirectResult in 0.8223ms.
+INFO  2019-03-29 10:11:12,963 [9    ] vc.Infrastructure.RedirectResultExecutor - Executing RedirectResult, redirecting to /swagger.
+INFO  2019-03-29 10:11:12,969 [9    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action BeiDream.SbsAbp.Web.Host.Controllers.HomeController.Index (BeiDream.SbsAbp.Web.Host) in 371.1611ms
+INFO  2019-03-29 10:11:12,971 [9    ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'BeiDream.SbsAbp.Web.Host.Controllers.HomeController.Index (BeiDream.SbsAbp.Web.Host)'
+INFO  2019-03-29 10:11:12,988 [9    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 589.5352ms 302 
+INFO  2019-03-29 10:11:12,994 [9    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:54642/swagger/index.html  
+WARN  2019-03-29 10:11:12,997 [9    ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-03-29 10:11:12,999 [9    ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-03-29 10:11:13,199 [9    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 205.2747ms 200 text/html
+INFO  2019-03-29 10:11:13,312 [9    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:54642/swagger/v1/swagger.json  
+WARN  2019-03-29 10:11:13,313 [9    ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures 'zh-CN, zh'.
+WARN  2019-03-29 10:11:13,315 [9    ] calization.RequestLocalizationMiddleware - AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures 'zh-CN, zh'.
+INFO  2019-03-29 10:11:13,434 [9    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 119.928ms 200 application/json;charset=utf-8

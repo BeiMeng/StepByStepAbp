@@ -1,19 +1,22 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
-    <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+    <!--AspNetCore2.2版本InProcess环境路径读取有BUG-->
+    <!--<AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>-->
     <RootNamespace>BeiDream.SbsAbp.Web</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="4.0.1" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\AbpFramework\Abp.AspNetCore\Abp.AspNetCore.csproj" />
+    <ProjectReference Include="..\AbpFramework\Abp.Castle.Log4Net\Abp.Castle.Log4Net.csproj" />
     <ProjectReference Include="..\BeiDream.SbsAbp.Application\BeiDream.SbsAbp.Application.csproj" />
     <ProjectReference Include="..\BeiDream.SbsAbp.EntityFrameworkCore\BeiDream.SbsAbp.EntityFrameworkCore.csproj" />
   </ItemGroup>

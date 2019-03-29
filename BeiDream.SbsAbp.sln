@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.329
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeiDream.SbsAbp.Core", "BeiDream.SbsAbp.Core\BeiDream.SbsAbp.Core.csproj", "{35231486-8F3D-4E3E-BEAD-349DE87FA96D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BeiDream.SbsAbp.Core", "BeiDream.SbsAbp.Core\BeiDream.SbsAbp.Core.csproj", "{35231486-8F3D-4E3E-BEAD-349DE87FA96D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeiDream.SbsAbp.EntityFrameworkCore", "BeiDream.SbsAbp.EntityFrameworkCore\BeiDream.SbsAbp.EntityFrameworkCore.csproj", "{E60FCCAB-7004-48AA-AF6D-38CD2FBDE68C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BeiDream.SbsAbp.EntityFrameworkCore", "BeiDream.SbsAbp.EntityFrameworkCore\BeiDream.SbsAbp.EntityFrameworkCore.csproj", "{E60FCCAB-7004-48AA-AF6D-38CD2FBDE68C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeiDream.SbsAbp.Application", "BeiDream.SbsAbp.Application\BeiDream.SbsAbp.Application.csproj", "{91A98D91-2310-4F8B-A9CC-119F02DD4377}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BeiDream.SbsAbp.Application", "BeiDream.SbsAbp.Application\BeiDream.SbsAbp.Application.csproj", "{91A98D91-2310-4F8B-A9CC-119F02DD4377}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeiDream.SbsAbp.Web.Host", "BeiDream.SbsAbp.Web.Host\BeiDream.SbsAbp.Web.Host.csproj", "{55D53444-67AD-41D3-950D-8F4F579E1862}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BeiDream.SbsAbp.Web.Host", "BeiDream.SbsAbp.Web.Host\BeiDream.SbsAbp.Web.Host.csproj", "{55D53444-67AD-41D3-950D-8F4F579E1862}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AbpFramework", "AbpFramework", "{FA704B32-F9F2-4E24-AAF6-7757FB3E1D6B}"
 EndProject
@@ -28,6 +28,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Abp.Web.Common", "AbpFramework\Abp.Web.Common\Abp.Web.Common.csproj", "{0D5784D2-D937-491A-8C93-6753E7842B34}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Abp.AspNetCore", "AbpFramework\Abp.AspNetCore\Abp.AspNetCore.csproj", "{ED5DC473-A7AA-4DED-B155-2775A2C14365}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Abp.Castle.Log4Net", "AbpFramework\Abp.Castle.Log4Net\Abp.Castle.Log4Net.csproj", "{215300B8-4886-45D8-9D37-7DE7E3B932D0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -71,6 +73,10 @@ Global
 		{ED5DC473-A7AA-4DED-B155-2775A2C14365}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ED5DC473-A7AA-4DED-B155-2775A2C14365}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ED5DC473-A7AA-4DED-B155-2775A2C14365}.Release|Any CPU.Build.0 = Release|Any CPU
+		{215300B8-4886-45D8-9D37-7DE7E3B932D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{215300B8-4886-45D8-9D37-7DE7E3B932D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{215300B8-4886-45D8-9D37-7DE7E3B932D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{215300B8-4886-45D8-9D37-7DE7E3B932D0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -83,6 +89,7 @@ Global
 		{92F00D0E-E7E1-4883-9E6B-470B2AE0F564} = {FA704B32-F9F2-4E24-AAF6-7757FB3E1D6B}
 		{0D5784D2-D937-491A-8C93-6753E7842B34} = {92F00D0E-E7E1-4883-9E6B-470B2AE0F564}
 		{ED5DC473-A7AA-4DED-B155-2775A2C14365} = {92F00D0E-E7E1-4883-9E6B-470B2AE0F564}
+		{215300B8-4886-45D8-9D37-7DE7E3B932D0} = {FA704B32-F9F2-4E24-AAF6-7757FB3E1D6B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9ED0FC8C-7828-4139-BC07-E0A3A27D87B3}
