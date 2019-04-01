@@ -21,6 +21,11 @@ namespace BeiDream.SbsAbp.Demo.DemoTasks
         {
             _demoTaskRepository = demoTaskRepository;
         }
+        /// <summary>
+        /// 获取全部数据
+        /// </summary>
+        /// <param name="input">查询参数</param>
+        /// <returns></returns>
         public async Task<ListResultDto<DemoTaskListDto>> GetDemoTasks(GetDemoTasksInput input)
         {
             var query = _demoTaskRepository.GetAll();
@@ -32,13 +37,32 @@ namespace BeiDream.SbsAbp.Demo.DemoTasks
             return new ListResultDto<DemoTaskListDto>(ObjectMapper.Map<List<DemoTaskListDto>>(demoTask));
         }
 
-        public Task<PagedResultDto<DemoTaskListDto>> GetPagedDemoTasks(GetDemoTasksPagedInput input)
+        public async Task<PagedResultDto<DemoTaskListDto>> GetPagedDemoTasks(GetDemoTasksPagedInput input)
         {
-            throw new NotImplementedException();
+            var query = _demoTaskRepository.GetAll();
+            query = query.WhereIf(!input.Name.IsNullOrWhiteSpace(), p => p.Name.Contains(input.Name))
+                        .Where(p => p.IsPublish == input.IsPublish).OrderBy(input.Sorting);
+
+            var count = await query.CountAsync();
+
+            var items = await query
+                .OrderBy(input.Sorting)
+                .PageBy(input)
+                .ToListAsync();
+
+            var listDtos = ObjectMapper.Map<List<DemoTaskListDto>>(items);
+
+            return new PagedResultDto<DemoTaskListDto>(
+                            count,
+                            listDtos
+                        );
         }
-        public Task<GetDemoTaskForEditOutput> GetDemoTaskForEdit(NullableIdDto<Guid> input)
+        public async Task<GetDemoTaskForEditOutput> GetDemoTaskForEdit(NullableIdDto<Guid> input)
         {
-            throw new NotImplementedException();
+            var entity = await _demoTaskRepository.GetAsync(input.Id.Value);
+            return new GetDemoTaskForEditOutput {
+                            DemoTask= ObjectMapper.Map<DemoTaskEditDto>(entity)
+                        };
         }
         public async Task CreateOrUpdateDemoTask(CreateOrUpdateDemoTaskInput input)
         {
@@ -51,27 +75,44 @@ namespace BeiDream.SbsAbp.Demo.DemoTasks
                 await CreateDemoTaskAsync(input);
             }
         }
-        public async Task CreateDemoTaskAsync(CreateOrUpdateDemoTaskInput input)
+        private async Task CreateDemoTaskAsync(CreateOrUpdateDemoTaskInput input)
         {
             var entity = ObjectMapper.Map<DemoTask>(input.DemoTask);
             await _demoTaskRepository.InsertAsync(entity);
         }
-        public async Task UpdateDemoTaskAsync(CreateOrUpdateDemoTaskInput input)
+        private async Task UpdateDemoTaskAsync(CreateOrUpdateDemoTaskInput input)
         {
-
+            var entity =await _demoTaskRepository.GetAsync(input.DemoTask.Id.Value);
+            ObjectMapper.Map(input.DemoTask, entity);
         }
-        public Task<CreatedOrUpdatedOutput> CreateOrUpdateDemoTaskForOutput(CreateOrUpdateDemoTaskInput input)
+        public async Task<CreatedOrUpdatedOutput> CreateOrUpdateDemoTaskForOutput(CreateOrUpdateDemoTaskInput input)
         {
-            throw new NotImplementedException();
+            if (input.DemoTask.Id.HasValue)
+            {
+               return await UpdateDemoTaskForOutputAsync(input);
+            }
+            else
+            {
+               return await CreateDemoTaskForOutputAsync(input);
+            }
         }
-
-        public Task DeleteDemoTask(EntityDto<Guid> input)
+        private async Task<CreatedOrUpdatedOutput> CreateDemoTaskForOutputAsync(CreateOrUpdateDemoTaskInput input)
         {
-            throw new NotImplementedException();
+            var entity = ObjectMapper.Map<DemoTask>(input.DemoTask);
+            await _demoTaskRepository.InsertAsync(entity);
+            await CurrentUnitOfWork.SaveChangesAsync();
+            return new CreatedOrUpdatedOutput() { Id=entity.Id};
         }
-
-
-
+        private async Task<CreatedOrUpdatedOutput> UpdateDemoTaskForOutputAsync(CreateOrUpdateDemoTaskInput input)
+        {
+            var entity = await _demoTaskRepository.GetAsync(input.DemoTask.Id.Value);
+            ObjectMapper.Map(input.DemoTask, entity);
+            return new CreatedOrUpdatedOutput() { Id = entity.Id };
+        }
+        public async Task DeleteDemoTask(EntityDto<Guid> input)
+        {
+            await _demoTaskRepository.DeleteAsync(input.Id);
+        }
 
     }
 }
