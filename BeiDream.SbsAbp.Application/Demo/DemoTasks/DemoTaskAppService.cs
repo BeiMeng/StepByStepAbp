@@ -36,7 +36,11 @@ namespace BeiDream.SbsAbp.Demo.DemoTasks
 
             return new ListResultDto<DemoTaskListDto>(ObjectMapper.Map<List<DemoTaskListDto>>(demoTask));
         }
-
+        /// <summary>
+        /// 获取分页数据
+        /// </summary>
+        /// <param name="input">带分页条件查询参数</param>
+        /// <returns></returns>
         public async Task<PagedResultDto<DemoTaskListDto>> GetPagedDemoTasks(GetDemoTasksPagedInput input)
         {
             var query = _demoTaskRepository.GetAll();
@@ -57,6 +61,11 @@ namespace BeiDream.SbsAbp.Demo.DemoTasks
                             listDtos
                         );
         }
+        /// <summary>
+        /// 获取编辑的单条数据
+        /// </summary>
+        /// <param name="input">数据的主键Id</param>
+        /// <returns></returns>
         public async Task<GetDemoTaskForEditOutput> GetDemoTaskForEdit(NullableIdDto<Guid> input)
         {
             var entity = await _demoTaskRepository.GetAsync(input.Id.Value);
@@ -64,6 +73,11 @@ namespace BeiDream.SbsAbp.Demo.DemoTasks
                             DemoTask= ObjectMapper.Map<DemoTaskEditDto>(entity)
                         };
         }
+        /// <summary>
+        /// 新增或者更新单条数据
+        /// </summary>
+        /// <param name="input">数据对象</param>
+        /// <returns></returns>
         public async Task CreateOrUpdateDemoTask(CreateOrUpdateDemoTaskInput input)
         {
             if (input.DemoTask.Id.HasValue)
@@ -85,6 +99,11 @@ namespace BeiDream.SbsAbp.Demo.DemoTasks
             var entity =await _demoTaskRepository.GetAsync(input.DemoTask.Id.Value);
             ObjectMapper.Map(input.DemoTask, entity);
         }
+        /// <summary>
+        /// 带返回值的 新增或更新
+        /// </summary>
+        /// <param name="input">数据对象</param>
+        /// <returns></returns>
         public async Task<CreatedOrUpdatedOutput> CreateOrUpdateDemoTaskForOutput(CreateOrUpdateDemoTaskInput input)
         {
             if (input.DemoTask.Id.HasValue)
@@ -109,6 +128,11 @@ namespace BeiDream.SbsAbp.Demo.DemoTasks
             ObjectMapper.Map(input.DemoTask, entity);
             return new CreatedOrUpdatedOutput() { Id = entity.Id };
         }
+        /// <summary>
+        /// 删除单条数据
+        /// </summary>
+        /// <param name="input">数据主键Id</param>
+        /// <returns></returns>
         public async Task DeleteDemoTask(EntityDto<Guid> input)
         {
             await _demoTaskRepository.DeleteAsync(input.Id);

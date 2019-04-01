@@ -13,6 +13,9 @@ using Abp.AspNetCore;
 using Swashbuckle.AspNetCore.Swagger;
 using Castle.Facilities.Logging;
 using Abp.Castle.Logging.Log4Net;
+using System.IO;
+using System.Reflection;
+using Abp.Reflection.Extensions;
 
 namespace BeiDream.SbsAbp.Web.Host
 {
@@ -35,6 +38,12 @@ namespace BeiDream.SbsAbp.Web.Host
             {
                 options.SwaggerDoc("v1", new Info { Title = "My API", Version = "v1" });
                 options.DocInclusionPredicate((docName, description) => true);  //swagger 显示动态生成的appliction层api
+
+                // Set the comments path for the Swagger JSON and UI.显示Swagger文档注释
+                var xmlFile = $"{typeof(SbsAbpApplicationModule).GetAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                options.IncludeXmlComments(xmlPath);
+
             });
 
             //Configure Abp and Dependency Injection
