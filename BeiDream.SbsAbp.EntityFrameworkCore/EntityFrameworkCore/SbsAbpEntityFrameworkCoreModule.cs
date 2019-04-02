@@ -2,6 +2,7 @@
 using Abp.EntityFrameworkCore.Configuration;
 using Abp.Modules;
 using Abp.Reflection.Extensions;
+using Abp.Zero.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -10,7 +11,7 @@ namespace BeiDream.SbsAbp.EntityFrameworkCore
 {
     [DependsOn(
         typeof(SbsAbpCoreModule),
-        typeof(AbpEntityFrameworkCoreModule))]
+        typeof(AbpZeroCoreEntityFrameworkCoreModule))]
     public class SbsAbpEntityFrameworkCoreModule : AbpModule
     {
         public override void Initialize()

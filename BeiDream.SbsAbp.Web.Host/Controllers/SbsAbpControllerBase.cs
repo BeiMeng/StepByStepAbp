@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BeiDream.SbsAbp.Web.Host.Controllers
 {
-    public class ControllerBaseController : AbpController
+    public class SbsAbpControllerBase : AbpController
     {
 
     }

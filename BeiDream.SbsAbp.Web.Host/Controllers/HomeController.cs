@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BeiDream.SbsAbp.Web.Host.Controllers
 {
-    public class HomeController : ControllerBaseController
+    public class HomeController : SbsAbpControllerBase
     {
         public IActionResult Index()
         {

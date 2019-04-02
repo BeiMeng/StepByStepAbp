@@ -16,7 +16,13 @@
 
   <ItemGroup>
     <ProjectReference Include="..\AbpFramework\Abp.EntityFrameworkCore\Abp.EntityFrameworkCore.csproj" />
+    <ProjectReference Include="..\AbpZero\Abp.ZeroCore.EntityFrameworkCore\Abp.ZeroCore.EntityFrameworkCore.csproj" />
     <ProjectReference Include="..\BeiDream.SbsAbp.Core\BeiDream.SbsAbp.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="EntityFrameworkCore\Seed\Host\" />
+    <Folder Include="EntityFrameworkCore\Seed\Tenants\" />
   </ItemGroup>
 
 </Project>
