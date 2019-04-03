@@ -4,11 +4,14 @@ using Abp.Modules;
 using Abp.Reflection.Extensions;
 using BeiDream.SbsAbp.Configuration;
 using BeiDream.SbsAbp.EntityFrameworkCore;
+using BeiDream.SbsAbp.Web.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace BeiDream.SbsAbp.Web
@@ -37,6 +40,19 @@ namespace BeiDream.SbsAbp.Web
                 .CreateControllersForAppServices(
                     typeof(SbsAbpApplicationModule).GetAssembly()
                 );
+
+            ConfigureTokenAuth();
+        }
+        private void ConfigureTokenAuth()
+        {
+            IocManager.Register<TokenAuthConfiguration>();
+            var tokenAuthConfig = IocManager.Resolve<TokenAuthConfiguration>();
+
+            tokenAuthConfig.SecurityKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(_appConfiguration["Authentication:JwtBearer:SecurityKey"]));
+            tokenAuthConfig.Issuer = _appConfiguration["Authentication:JwtBearer:Issuer"];
+            tokenAuthConfig.Audience = _appConfiguration["Authentication:JwtBearer:Audience"];
+            tokenAuthConfig.SigningCredentials = new SigningCredentials(tokenAuthConfig.SecurityKey, SecurityAlgorithms.HmacSha256);
+            tokenAuthConfig.Expiration = TimeSpan.FromDays(1);
         }
         public override void Initialize()
         {

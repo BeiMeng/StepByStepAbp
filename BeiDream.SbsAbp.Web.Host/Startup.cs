@@ -16,6 +16,7 @@ using Abp.Castle.Logging.Log4Net;
 using System.IO;
 using System.Reflection;
 using Abp.Reflection.Extensions;
+using BeiDream.SbsAbp.Zero.Identity;
 
 namespace BeiDream.SbsAbp.Web.Host
 {
@@ -32,6 +33,9 @@ namespace BeiDream.SbsAbp.Web.Host
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+            //身份认证相关注册
+            IdentityRegistrar.Register(services);
 
             // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen(options =>

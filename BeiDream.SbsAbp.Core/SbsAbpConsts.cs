@@ -6,6 +6,8 @@ namespace BeiDream.SbsAbp
 {
     public class SbsAbpConsts
     {
+        public const string LocalizationSourceName = "SbsAbp";
+
         public const string ConnectionStringName = "Default";
     }
 }
