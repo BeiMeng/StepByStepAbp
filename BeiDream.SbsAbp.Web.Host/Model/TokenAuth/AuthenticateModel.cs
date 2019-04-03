@@ -7,5 +7,6 @@ namespace BeiDream.SbsAbp.Web.Model.TokenAuth
 {
     public class AuthenticateModel
     {
+
     }
 }

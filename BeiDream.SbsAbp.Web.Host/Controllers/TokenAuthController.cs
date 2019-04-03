@@ -9,13 +9,13 @@ using Microsoft.AspNetCore.Mvc;
 namespace BeiDream.SbsAbp.Web.Host.Controllers
 {
     [Route("api/[controller]/[action]")]
-    [ApiController]
+    //[ApiController]
     public class TokenAuthController : SbsAbpControllerBase
     {
-        //[HttpPost]
+        [HttpPost]
         public async Task<AuthenticateResultModel> Authenticate(AuthenticateModel model)
         {
             return new AuthenticateResultModel();
         }
-}
+    }
 }
