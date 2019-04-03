@@ -19,6 +19,7 @@ using System.Reflection;
 using Abp.Reflection.Extensions;
 using BeiDream.SbsAbp.Zero.Identity;
 using BeiDream.SbsAbp.Configuration;
+using BeiDream.SbsAbp.Web.Authentication;
 
 namespace BeiDream.SbsAbp.Web.Host
 {
@@ -43,6 +44,8 @@ namespace BeiDream.SbsAbp.Web.Host
 
             //身份认证相关注册
             IdentityRegistrar.Register(services);
+            //开启jwt 认证
+            AuthConfigurer.Configure(services, _appConfiguration);
 
             // Configure CORS for Client UI
             services.AddCors(
@@ -97,6 +100,8 @@ namespace BeiDream.SbsAbp.Web.Host
                 app.UseDeveloperExceptionPage();
             }
             app.UseStaticFiles();
+
+            app.UseAuthentication();
 
             app.UseMvc(routes =>
             {
