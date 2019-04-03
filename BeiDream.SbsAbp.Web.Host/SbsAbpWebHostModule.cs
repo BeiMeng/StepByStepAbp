@@ -2,6 +2,7 @@
 using Abp.AspNetCore.Configuration;
 using Abp.Modules;
 using Abp.Reflection.Extensions;
+using Abp.Zero.Configuration;
 using BeiDream.SbsAbp.Configuration;
 using BeiDream.SbsAbp.EntityFrameworkCore;
 using BeiDream.SbsAbp.Web.Authentication.JwtBearer;
@@ -34,6 +35,10 @@ namespace BeiDream.SbsAbp.Web
         {
             //从appsettings.json获取数据库链接字符串并配置为默认链接
             Configuration.DefaultNameOrConnectionString = _appConfiguration.GetConnectionString(SbsAbpConsts.ConnectionStringName);
+
+            // Use database for language management
+            //使用数据库的语言管理数据
+            Configuration.Modules.Zero().LanguageManagement.EnableDbLocalization();
 
             //将application层 动态生成 webapi
             Configuration.Modules.AbpAspNetCore()

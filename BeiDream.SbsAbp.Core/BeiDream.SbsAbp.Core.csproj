@@ -6,6 +6,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Localization\SourceFiles\SbsAbp-zh-Hans.xml" />
+    <None Remove="Localization\SourceFiles\SbsAbp.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Localization\SourceFiles\SbsAbp-zh-Hans.xml" />
+    <EmbeddedResource Include="Localization\SourceFiles\SbsAbp.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Hosting" Version="2.2.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="2.2.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.2.0" />
