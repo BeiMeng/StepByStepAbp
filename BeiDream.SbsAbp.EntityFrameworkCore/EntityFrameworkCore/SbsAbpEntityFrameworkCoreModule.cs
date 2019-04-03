@@ -3,6 +3,7 @@ using Abp.EntityFrameworkCore.Configuration;
 using Abp.Modules;
 using Abp.Reflection.Extensions;
 using Abp.Zero.EntityFrameworkCore;
+using BeiDream.SbsAbp.EntityFrameworkCore.Seed;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -31,6 +32,10 @@ namespace BeiDream.SbsAbp.EntityFrameworkCore
                     SbsAbpDbContextConfigurer.Configure(options.DbContextOptions, options.ConnectionString);
                 }
             });
+        }
+        public override void PostInitialize()
+        {
+            SeedHelper.SeedHostDb(IocManager);
         }
     }
 }
