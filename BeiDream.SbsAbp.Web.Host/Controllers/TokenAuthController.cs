@@ -39,7 +39,7 @@ namespace BeiDream.SbsAbp.Web.Host.Controllers
             _logInManager = logInManager;
         }
         [HttpPost]
-        public async Task<AuthenticateResultModel> Authenticate(AuthenticateModel model)
+        public async Task<AuthenticateResultModel> Authenticate([FromBody]AuthenticateModel model)
         {
             var loginResult = await GetLoginResultAsync(
                 model.UserNameOrEmailAddress,

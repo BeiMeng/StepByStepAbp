@@ -13,22 +13,29 @@ using Abp.AspNetCore;
 using Swashbuckle.AspNetCore.Swagger;
 using Castle.Facilities.Logging;
 using Abp.Castle.Logging.Log4Net;
+using Abp.Extensions;
 using System.IO;
 using System.Reflection;
 using Abp.Reflection.Extensions;
 using BeiDream.SbsAbp.Zero.Identity;
+using BeiDream.SbsAbp.Configuration;
 
 namespace BeiDream.SbsAbp.Web.Host
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
-        {
-            Configuration = configuration;
-        }
+        private const string _defaultCorsPolicyName = "localhost";
 
         public IConfiguration Configuration { get; }
 
+        private readonly IConfigurationRoot _appConfiguration;
+        public Startup(IConfiguration configuration, IHostingEnvironment env)
+        {
+            Configuration = configuration;
+            _appConfiguration = env.GetAppConfiguration();
+        }
+
+       
         // This method gets called by the runtime. Use this method to add services to the container.
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
@@ -36,6 +43,24 @@ namespace BeiDream.SbsAbp.Web.Host
 
             //身份认证相关注册
             IdentityRegistrar.Register(services);
+
+            // Configure CORS for Client UI
+            services.AddCors(
+                options => options.AddPolicy(
+                    _defaultCorsPolicyName,
+                    builder => builder
+                        .WithOrigins(
+                            // App:CorsOrigins in appsettings.json can contain more than one address separated by comma.
+                            _appConfiguration["App:CorsOrigins"]
+                                .Split(",", StringSplitOptions.RemoveEmptyEntries)
+                                .Select(o => o.RemovePostFix("/"))
+                                .ToArray()
+                        )
+                        .AllowAnyHeader()
+                        .AllowAnyMethod()
+                        .AllowCredentials()
+                )
+            );
 
             // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen(options =>
@@ -64,6 +89,8 @@ namespace BeiDream.SbsAbp.Web.Host
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             app.UseAbp(); //Initializes ABP framework.
+
+            app.UseCors(_defaultCorsPolicyName); // Enable CORS!
 
             if (env.IsDevelopment())
             {

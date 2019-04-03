@@ -15,5 +15,5 @@ namespace BeiDream.SbsAbp
             configuration.CreateMap<DemoTask, DemoTaskEditDto>().ReverseMap();
             configuration.CreateMap<DemoTask, DemoTaskListDto>();
         }
-}
+    }
 }
