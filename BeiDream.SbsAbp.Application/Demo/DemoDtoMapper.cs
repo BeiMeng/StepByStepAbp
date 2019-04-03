@@ -7,7 +7,7 @@ using System.Text;
 
 namespace BeiDream.SbsAbp
 {
-    public class CustomDtoMapper
+    public class DemoDtoMapper
     {
         public static void CreateMappings(IMapperConfigurationExpression configuration)
         {

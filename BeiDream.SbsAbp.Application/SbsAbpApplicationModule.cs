@@ -1,7 +1,9 @@
 ﻿using Abp.AutoMapper;
 using Abp.Modules;
 using Abp.Reflection.Extensions;
+using BeiDream.SbsAbp.Demo.Authorization;
 using BeiDream.SbsAbp.Zero;
+using BeiDream.SbsAbp.Zero.Authorization;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -15,9 +17,11 @@ namespace BeiDream.SbsAbp
     {
         public override void PreInitialize()
         {
+            Configuration.Authorization.Providers.Add<DemoAuthorizationProvider>();
+            Configuration.Authorization.Providers.Add<ZeroAuthorizationProvider>();
 
             //Adding custom AutoMapper configuration
-            Configuration.Modules.AbpAutoMapper().Configurators.Add(CustomDtoMapper.CreateMappings);
+            Configuration.Modules.AbpAutoMapper().Configurators.Add(DemoDtoMapper.CreateMappings);
             //Zero
             Configuration.Modules.AbpAutoMapper().Configurators.Add(ZeroDtoMapper.CreateMappings);
         }

@@ -9,6 +9,7 @@ using Abp.MultiTenancy;
 using BeiDream.SbsAbp.Zero.Authorization.Roles;
 using BeiDream.SbsAbp.Zero.Authorization;
 using BeiDream.SbsAbp.Zero.Authorization.Users;
+using BeiDream.SbsAbp.Demo.Authorization;
 
 namespace BeiDream.SbsAbp.EntityFrameworkCore.Seed.Tenants
 { 
@@ -48,10 +49,17 @@ namespace BeiDream.SbsAbp.EntityFrameworkCore.Seed.Tenants
                 .ToList();
 
             var permissions = PermissionFinder
-                .GetAllPermissions(new SbsAbpAuthorizationProvider())
+                .GetAllPermissions(new ZeroAuthorizationProvider())
                 .Where(p => p.MultiTenancySides.HasFlag(MultiTenancySides.Tenant) &&
                             !grantedPermissions.Contains(p.Name))
                 .ToList();
+
+            var demoPermissions = PermissionFinder
+            .GetAllPermissions(new DemoAuthorizationProvider())
+                .Where(p => p.MultiTenancySides.HasFlag(MultiTenancySides.Tenant) &&
+                            !grantedPermissions.Contains(p.Name))
+                .ToList();
+            permissions.AddRange(demoPermissions);
 
             if (permissions.Any())
             {

@@ -46,7 +46,7 @@ namespace BeiDream.SbsAbp.EntityFrameworkCore.Seed.Host
                 .ToList();
 
             var permissions = PermissionFinder
-                .GetAllPermissions(new SbsAbpAuthorizationProvider())
+                .GetAllPermissions(new ZeroAuthorizationProvider())
                 .Where(p => p.MultiTenancySides.HasFlag(MultiTenancySides.Host) &&
                             !grantedPermissions.Contains(p.Name))
                 .ToList();

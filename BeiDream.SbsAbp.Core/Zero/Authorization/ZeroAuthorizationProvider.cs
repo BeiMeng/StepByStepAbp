@@ -6,7 +6,7 @@ using System.Text;
 namespace BeiDream.SbsAbp.Zero.Authorization
 {
 
-    public class SbsAbpAuthorizationProvider : AuthorizationProvider
+    public class ZeroAuthorizationProvider : AuthorizationProvider
     {
         public override void SetPermissions(IPermissionDefinitionContext context)
         {

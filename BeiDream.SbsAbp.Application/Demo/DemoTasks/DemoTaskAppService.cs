@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using System.Linq.Dynamic.Core;
 using Microsoft.EntityFrameworkCore;
 using Abp.Authorization;
+using BeiDream.SbsAbp.Demo.Authorization;
 
 namespace BeiDream.SbsAbp.Demo.DemoTasks
 {
@@ -28,7 +29,7 @@ namespace BeiDream.SbsAbp.Demo.DemoTasks
         /// </summary>
         /// <param name="input">查询参数</param>
         /// <returns></returns>
-        [AbpAuthorize]
+        [AbpAuthorize(DemoPermissionNames.DemoPages_DemoTasks)]
         public async Task<ListResultDto<DemoTaskListDto>> GetDemoTasks(GetDemoTasksInput input)
         {
             var query = _demoTaskRepository.GetAll();
