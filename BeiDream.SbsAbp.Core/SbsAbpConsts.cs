@@ -14,5 +14,10 @@ namespace BeiDream.SbsAbp
         /// 是否开启多租户功能
         /// </summary>
         public const bool MultiTenancyEnabled = false;
+
+        /// <summary>
+        /// 定义权限树根节点
+        /// </summary>
+        public const string AppPages = "AppPages";
     }
 }

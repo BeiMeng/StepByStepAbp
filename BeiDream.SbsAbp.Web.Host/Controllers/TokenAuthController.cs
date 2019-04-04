@@ -4,10 +4,13 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using Abp;
 using Abp.Authorization;
 using Abp.Authorization.Users;
 using Abp.MultiTenancy;
+using Abp.Runtime.Caching;
 using Abp.Runtime.Security;
+using Abp.Runtime.Session;
 using BeiDream.SbsAbp.Common;
 using BeiDream.SbsAbp.Web.Authentication.JwtBearer;
 using BeiDream.SbsAbp.Web.Model.TokenAuth;
@@ -15,7 +18,9 @@ using BeiDream.SbsAbp.Zero.Authorization;
 using BeiDream.SbsAbp.Zero.Authorization.Users;
 using BeiDream.SbsAbp.Zero.MultiTenancy;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 
 namespace BeiDream.SbsAbp.Web.Host.Controllers
 {
@@ -27,16 +32,25 @@ namespace BeiDream.SbsAbp.Web.Host.Controllers
         private readonly ITenantCache _tenantCache;
         private readonly AbpLoginResultTypeHelper _abpLoginResultTypeHelper;
         private readonly TokenAuthConfiguration _configuration;
+        private readonly UserManager _userManager;
+        private readonly ICacheManager _cacheManager;
+        private readonly IdentityOptions _identityOptions;
         public TokenAuthController(
             LogInManager logInManager,
             AbpLoginResultTypeHelper abpLoginResultTypeHelper,
             TokenAuthConfiguration configuration,
+            UserManager userManager,
+            ICacheManager cacheManager,
+            IOptions<IdentityOptions> identityOptions,
             ITenantCache tenantCache)
         {
             _tenantCache = tenantCache;
             _abpLoginResultTypeHelper = abpLoginResultTypeHelper;
             _configuration = configuration;
             _logInManager = logInManager;
+            _userManager = userManager;
+            _cacheManager = cacheManager;
+            _identityOptions = identityOptions.Value;
         }
         [HttpPost]
         public async Task<AuthenticateResultModel> Authenticate([FromBody]AuthenticateModel model)
@@ -47,8 +61,8 @@ namespace BeiDream.SbsAbp.Web.Host.Controllers
                 GetTenancyNameOrNull()
             );
 
-            var accessToken = CreateAccessToken(CreateJwtClaims(loginResult.Identity));
-
+            //var accessToken = CreateAccessToken(CreateJwtClaims(loginResult.Identity));
+            var accessToken = CreateAccessToken(await CreateJwtClaims(loginResult.Identity, loginResult.User));
             return new AuthenticateResultModel
             {
                 AccessToken = accessToken,
@@ -56,6 +70,18 @@ namespace BeiDream.SbsAbp.Web.Host.Controllers
                 ExpireInSeconds = (int)_configuration.Expiration.TotalSeconds,
                 UserId = loginResult.User.Id
             };
+        }
+
+        [HttpGet]
+        [AbpAuthorize]
+        public async Task LogOut()
+        {
+            if (AbpSession.UserId != null)
+            {
+                var tokenValidityKeyInClaims = User.Claims.First(c => c.Type == AppConsts.TokenValidityKey);
+                await _userManager.RemoveTokenValidityKeyAsync(_userManager.GetUser(AbpSession.ToUserIdentifier()), tokenValidityKeyInClaims.Value);
+                _cacheManager.GetCache(AppConsts.TokenValidityKey).Remove(tokenValidityKeyInClaims.Value);
+            }
         }
 
         #region 登陆逻辑
@@ -112,6 +138,36 @@ namespace BeiDream.SbsAbp.Web.Host.Controllers
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                 new Claim(JwtRegisteredClaimNames.Iat, DateTimeOffset.Now.ToUnixTimeSeconds().ToString(), ClaimValueTypes.Integer64)
             });
+
+            return claims;
+        }
+        private async Task<IEnumerable<Claim>> CreateJwtClaims(ClaimsIdentity identity, User user, TimeSpan? expiration = null)
+        {
+            var tokenValidityKey = Guid.NewGuid().ToString();
+            var claims = identity.Claims.ToList();
+            var nameIdClaim = claims.First(c => c.Type == _identityOptions.ClaimsIdentity.UserIdClaimType);
+
+            if (_identityOptions.ClaimsIdentity.UserIdClaimType != JwtRegisteredClaimNames.Sub)
+            {
+                claims.Add(new Claim(JwtRegisteredClaimNames.Sub, nameIdClaim.Value));
+            }
+
+            var userIdentifier = new UserIdentifier(AbpSession.TenantId, Convert.ToInt64(nameIdClaim.Value));
+
+            claims.AddRange(new[]
+            {
+                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+                new Claim(JwtRegisteredClaimNames.Iat, DateTimeOffset.Now.ToUnixTimeSeconds().ToString(), ClaimValueTypes.Integer64),
+                new Claim(AppConsts.TokenValidityKey, tokenValidityKey),
+                new Claim(AppConsts.UserIdentifier, userIdentifier.ToUserIdentifierString())
+            });
+
+            _cacheManager
+                .GetCache(AppConsts.TokenValidityKey)
+                .Set(tokenValidityKey, "");
+
+            await _userManager.AddTokenValidityKeyAsync(user, tokenValidityKey,
+                DateTime.UtcNow.Add(expiration ?? _configuration.Expiration));
 
             return claims;
         }

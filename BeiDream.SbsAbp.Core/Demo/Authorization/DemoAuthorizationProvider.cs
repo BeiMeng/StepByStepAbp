@@ -11,7 +11,11 @@ namespace BeiDream.SbsAbp.Demo.Authorization
     {
         public override void SetPermissions(IPermissionDefinitionContext context)
         {
-            context.CreatePermission(DemoPermissionNames.DemoPages_DemoTasks, L("测试任务"));
+            var pages = context.GetPermissionOrNull(SbsAbpConsts.AppPages) ?? context.CreatePermission(SbsAbpConsts.AppPages, L("后台系统"));
+
+            var demo = pages.CreateChildPermission(DemoPermissionNames.DemoPages, L("测试模块"));
+
+            var demoTasks = demo.CreateChildPermission(DemoPermissionNames.DemoPages_DemoTasks, L("测试任务"));
         }
         private static ILocalizableString L(string name)
         {

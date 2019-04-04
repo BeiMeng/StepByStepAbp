@@ -6,6 +6,8 @@ namespace BeiDream.SbsAbp.Zero.Authorization
 {
     public static class ZeroPermissionNames
     {
+        public const string ZeroPages = "ZeroPages";
+
         public const string ZeroPages_Users = "ZeroPages.Users";
 
         public const string ZeroPages_Roles = "ZeroPages.Roles";
