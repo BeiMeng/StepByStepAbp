@@ -49,7 +49,7 @@ namespace BeiDream.SbsAbp.Demo.DemoTasks
         {
             var query = _demoTaskRepository.GetAll();
             query = query.WhereIf(!input.Name.IsNullOrWhiteSpace(), p => p.Name.Contains(input.Name))
-                        .Where(p => p.IsPublish == input.IsPublish).OrderBy(input.Sorting);
+                        .WhereIf(input.IsPublish.HasValue, p => p.IsPublish == input.IsPublish);
 
             var count = await query.CountAsync();
 
