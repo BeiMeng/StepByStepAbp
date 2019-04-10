@@ -8,6 +8,6 @@ namespace BeiDream.SbsAbp.Demo.DemoTasks.Dto
     public class CreateOrUpdateDemoTaskInput
     {
         [Required]
-        public DemoTaskEditDto DemoTask { get; set; }
+        public DemoTaskEditDto Item { get; set; }
     }
 }

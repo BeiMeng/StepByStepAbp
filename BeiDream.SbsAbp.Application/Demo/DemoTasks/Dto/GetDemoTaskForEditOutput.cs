@@ -6,6 +6,6 @@ namespace BeiDream.SbsAbp.Demo.DemoTasks.Dto
 {
     public class GetDemoTaskForEditOutput
     {
-        public DemoTaskEditDto DemoTask { get; set; }
+        public DemoTaskEditDto Item { get; set; }
     }
 }

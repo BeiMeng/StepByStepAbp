@@ -27,10 +27,15 @@ namespace BeiDream.SbsAbp.Common
         /// </summary>
         public const string TokenValidityKey = "token_validity_key";
 
-
+ 
         /// <summary>
         /// 生成jwt token 添加的 登陆用户信息 的 标识
         /// </summary>
         public static string UserIdentifier = "user_identifier";
+
+        /// <summary>
+        /// jwt token 过期时间
+        /// </summary>
+        public static TimeSpan AccessTokenExpiration = TimeSpan.FromMinutes(1);
     }
 }

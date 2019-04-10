@@ -3,6 +3,7 @@ using Abp.AspNetCore.Configuration;
 using Abp.Modules;
 using Abp.Reflection.Extensions;
 using Abp.Zero.Configuration;
+using BeiDream.SbsAbp.Common;
 using BeiDream.SbsAbp.Configuration;
 using BeiDream.SbsAbp.EntityFrameworkCore;
 using BeiDream.SbsAbp.Web.Authentication.JwtBearer;
@@ -57,7 +58,7 @@ namespace BeiDream.SbsAbp.Web
             tokenAuthConfig.Issuer = _appConfiguration["Authentication:JwtBearer:Issuer"];
             tokenAuthConfig.Audience = _appConfiguration["Authentication:JwtBearer:Audience"];
             tokenAuthConfig.SigningCredentials = new SigningCredentials(tokenAuthConfig.SecurityKey, SecurityAlgorithms.HmacSha256);
-            tokenAuthConfig.Expiration = TimeSpan.FromDays(1);
+            tokenAuthConfig.Expiration = AppConsts.AccessTokenExpiration;
         }
         public override void Initialize()
         {

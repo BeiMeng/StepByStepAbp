@@ -16,6 +16,7 @@ using BeiDream.SbsAbp.Demo.Authorization;
 
 namespace BeiDream.SbsAbp.Demo.DemoTasks
 {
+    [AbpAuthorize(DemoPermissionNames.DemoPages_DemoTasks)]
     public class DemoTaskAppService : SbsAbpAppServiceBase, IDemoTaskAppService
     {
         private readonly IRepository<DemoTask,Guid> _demoTaskRepository;
@@ -29,7 +30,6 @@ namespace BeiDream.SbsAbp.Demo.DemoTasks
         /// </summary>
         /// <param name="input">查询参数</param>
         /// <returns></returns>
-        [AbpAuthorize(DemoPermissionNames.DemoPages_DemoTasks)]
         public async Task<ListResultDto<DemoTaskListDto>> GetDemoTasks(GetDemoTasksInput input)
         {
             var query = _demoTaskRepository.GetAll();
@@ -70,11 +70,12 @@ namespace BeiDream.SbsAbp.Demo.DemoTasks
         /// </summary>
         /// <param name="input">数据的主键Id</param>
         /// <returns></returns>
+        [AbpAuthorize(DemoPermissionNames.DemoPages_DemoTasks_Create, DemoPermissionNames.DemoPages_DemoTasks_Edit)]
         public async Task<GetDemoTaskForEditOutput> GetDemoTaskForEdit(NullableIdDto<Guid> input)
         {
             var entity = await _demoTaskRepository.GetAsync(input.Id.Value);
             return new GetDemoTaskForEditOutput {
-                            DemoTask= ObjectMapper.Map<DemoTaskEditDto>(entity)
+                            Item= ObjectMapper.Map<DemoTaskEditDto>(entity)
                         };
         }
         /// <summary>
@@ -82,9 +83,10 @@ namespace BeiDream.SbsAbp.Demo.DemoTasks
         /// </summary>
         /// <param name="input">数据对象</param>
         /// <returns></returns>
+
         public async Task CreateOrUpdateDemoTask(CreateOrUpdateDemoTaskInput input)
         {
-            if (input.DemoTask.Id.HasValue)
+            if (input.Item.Id.HasValue)
             {
                 await UpdateDemoTaskAsync(input);
             }
@@ -93,15 +95,17 @@ namespace BeiDream.SbsAbp.Demo.DemoTasks
                 await CreateDemoTaskAsync(input);
             }
         }
+        [AbpAuthorize(DemoPermissionNames.DemoPages_DemoTasks_Create)]
         private async Task CreateDemoTaskAsync(CreateOrUpdateDemoTaskInput input)
         {
-            var entity = ObjectMapper.Map<DemoTask>(input.DemoTask);
+            var entity = ObjectMapper.Map<DemoTask>(input.Item);
             await _demoTaskRepository.InsertAsync(entity);
         }
+        [AbpAuthorize(DemoPermissionNames.DemoPages_DemoTasks_Edit)]
         private async Task UpdateDemoTaskAsync(CreateOrUpdateDemoTaskInput input)
         {
-            var entity =await _demoTaskRepository.GetAsync(input.DemoTask.Id.Value);
-            ObjectMapper.Map(input.DemoTask, entity);
+            var entity =await _demoTaskRepository.GetAsync(input.Item.Id.Value);
+            ObjectMapper.Map(input.Item, entity);
         }
         /// <summary>
         /// 带返回值的 新增或更新
@@ -110,7 +114,7 @@ namespace BeiDream.SbsAbp.Demo.DemoTasks
         /// <returns></returns>
         public async Task<CreatedOrUpdatedOutput> CreateOrUpdateDemoTaskForOutput(CreateOrUpdateDemoTaskInput input)
         {
-            if (input.DemoTask.Id.HasValue)
+            if (input.Item.Id.HasValue)
             {
                return await UpdateDemoTaskForOutputAsync(input);
             }
@@ -119,17 +123,19 @@ namespace BeiDream.SbsAbp.Demo.DemoTasks
                return await CreateDemoTaskForOutputAsync(input);
             }
         }
+        [AbpAuthorize(DemoPermissionNames.DemoPages_DemoTasks_Create)]
         private async Task<CreatedOrUpdatedOutput> CreateDemoTaskForOutputAsync(CreateOrUpdateDemoTaskInput input)
         {
-            var entity = ObjectMapper.Map<DemoTask>(input.DemoTask);
+            var entity = ObjectMapper.Map<DemoTask>(input.Item);
             await _demoTaskRepository.InsertAsync(entity);
             await CurrentUnitOfWork.SaveChangesAsync();
             return new CreatedOrUpdatedOutput() { Id=entity.Id};
         }
+        [AbpAuthorize(DemoPermissionNames.DemoPages_DemoTasks_Edit)]
         private async Task<CreatedOrUpdatedOutput> UpdateDemoTaskForOutputAsync(CreateOrUpdateDemoTaskInput input)
         {
-            var entity = await _demoTaskRepository.GetAsync(input.DemoTask.Id.Value);
-            ObjectMapper.Map(input.DemoTask, entity);
+            var entity = await _demoTaskRepository.GetAsync(input.Item.Id.Value);
+            ObjectMapper.Map(input.Item, entity);
             return new CreatedOrUpdatedOutput() { Id = entity.Id };
         }
         /// <summary>
@@ -137,6 +143,7 @@ namespace BeiDream.SbsAbp.Demo.DemoTasks
         /// </summary>
         /// <param name="input">数据主键Id</param>
         /// <returns></returns>
+        [AbpAuthorize(DemoPermissionNames.DemoPages_DemoTasks_Delete)]
         public async Task DeleteDemoTask(EntityDto<Guid> input)
         {
             await _demoTaskRepository.DeleteAsync(input.Id);
