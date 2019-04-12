@@ -36,6 +36,6 @@ namespace BeiDream.SbsAbp.Common
         /// <summary>
         /// jwt token 过期时间
         /// </summary>
-        public static TimeSpan AccessTokenExpiration = TimeSpan.FromMinutes(1);
+        public static TimeSpan AccessTokenExpiration = TimeSpan.FromMinutes(30);
     }
 }
