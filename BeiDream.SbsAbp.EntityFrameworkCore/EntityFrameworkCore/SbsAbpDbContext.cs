@@ -3,6 +3,7 @@ using Abp.Zero.EntityFrameworkCore;
 using BeiDream.SbsAbp.Demo.DemoTasks;
 using BeiDream.SbsAbp.Zero.Authorization.Roles;
 using BeiDream.SbsAbp.Zero.Authorization.Users;
+using BeiDream.SbsAbp.Zero.Menus;
 using BeiDream.SbsAbp.Zero.MultiTenancy;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -20,6 +21,10 @@ namespace BeiDream.SbsAbp.EntityFrameworkCore
     {
         /* Define a DbSet for each entity of the application */
         public DbSet<DemoTask> DemoTasks { get; set; }
+
+
+
+        public DbSet<Menu> Menus { get; set; }
         public SbsAbpDbContext(DbContextOptions<SbsAbpDbContext> options)
             : base(options)
         {

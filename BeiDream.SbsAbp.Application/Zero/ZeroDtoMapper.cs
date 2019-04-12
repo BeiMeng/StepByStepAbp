@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
 using BeiDream.SbsAbp.Zero.Authorization.Users;
+using BeiDream.SbsAbp.Zero.Menus;
+using BeiDream.SbsAbp.Zero.Menus.Dto;
 using BeiDream.SbsAbp.Zero.MultiTenancy;
 using BeiDream.SbsAbp.Zero.Sessions.Dto;
 using System;
@@ -17,6 +19,8 @@ namespace BeiDream.SbsAbp.Zero
             configuration.CreateMap<User, UserLoginInfoDto>();
             //Tenant
             configuration.CreateMap<Tenant, TenantLoginInfoDto>();
+
+            configuration.CreateMap<Menu, MenuDto>().ReverseMap();
         }
     }
 }

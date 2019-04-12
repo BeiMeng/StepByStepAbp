@@ -5,7 +5,6 @@ using BeiDream.SbsAbp.Demo.Authorization;
 using BeiDream.SbsAbp.Demo.Navigation;
 using BeiDream.SbsAbp.Zero;
 using BeiDream.SbsAbp.Zero.Authorization;
-using BeiDream.SbsAbp.Zero.Navigation;
 using System;
 using System.Collections.Generic;
 using System.Text;

@@ -4,14 +4,16 @@ using BeiDream.SbsAbp.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BeiDream.SbsAbp.Migrations
 {
     [DbContext(typeof(SbsAbpDbContext))]
-    partial class SbsAbpDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190412080314_UpdateMenu")]
+    partial class UpdateMenu
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1099,17 +1101,13 @@ namespace BeiDream.SbsAbp.Migrations
 
                     b.Property<int>("Level");
 
-                    b.Property<string>("Name")
-                        .HasMaxLength(100);
+                    b.Property<string>("Name");
 
                     b.Property<bool>("NotClose");
 
                     b.Property<int>("Order");
 
                     b.Property<Guid?>("ParentId");
-
-                    b.Property<string>("PermissionName")
-                        .HasMaxLength(200);
 
                     b.Property<string>("Url")
                         .HasMaxLength(100);

@@ -1,4 +1,5 @@
 ﻿using Abp.AutoMapper;
+using Abp.GeneralTree;
 using Abp.Modules;
 using Abp.Reflection.Extensions;
 using Abp.Zero;
@@ -14,6 +15,7 @@ using System.Text;
 namespace BeiDream.SbsAbp
 {
     [DependsOn(
+        typeof(GeneralTreeModule),
         typeof(AbpZeroCoreModule),
         typeof(AbpAutoMapperModule))]
     public class SbsAbpCoreModule : AbpModule

@@ -43,6 +43,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Abp.Zero.Common", "AbpZero\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Abp.ZeroCore.EntityFrameworkCore", "AbpZero\Abp.ZeroCore.EntityFrameworkCore\Abp.ZeroCore.EntityFrameworkCore.csproj", "{2E9D8B86-6452-431D-B910-CD3036715254}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Abp.GeneralTree", "AbpFramework\Abp.GeneralTree\Abp.GeneralTree.csproj", "{90FCC5E7-5F64-4E1C-B2DD-9B45F73CE39D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -105,6 +107,10 @@ Global
 		{2E9D8B86-6452-431D-B910-CD3036715254}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2E9D8B86-6452-431D-B910-CD3036715254}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2E9D8B86-6452-431D-B910-CD3036715254}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90FCC5E7-5F64-4E1C-B2DD-9B45F73CE39D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90FCC5E7-5F64-4E1C-B2DD-9B45F73CE39D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90FCC5E7-5F64-4E1C-B2DD-9B45F73CE39D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90FCC5E7-5F64-4E1C-B2DD-9B45F73CE39D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -124,6 +130,7 @@ Global
 		{C24650E0-67B7-4A0F-B673-30E74633DBF1} = {37B24F0C-2F3E-439E-948D-3FA5B0ABA1D2}
 		{98A4A015-85D4-4D75-9960-DE689A8C11A8} = {37B24F0C-2F3E-439E-948D-3FA5B0ABA1D2}
 		{2E9D8B86-6452-431D-B910-CD3036715254} = {37B24F0C-2F3E-439E-948D-3FA5B0ABA1D2}
+		{90FCC5E7-5F64-4E1C-B2DD-9B45F73CE39D} = {FA704B32-F9F2-4E24-AAF6-7757FB3E1D6B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9ED0FC8C-7828-4139-BC07-E0A3A27D87B3}
