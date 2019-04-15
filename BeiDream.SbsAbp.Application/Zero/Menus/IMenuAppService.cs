@@ -10,6 +10,8 @@ namespace BeiDream.SbsAbp.Zero.Menus
 {
     public interface IMenuAppService : IApplicationService
     {
+        Task<List<MenuTreeDto>> GetMenuTree();
+        Task<MenuDto> GetMenuForEdit(NullableIdDto<Guid> input);
         Task<MenuDto> CreateOrUpdateMenuForOutput(MenuDto input);
         Task DeleteMenu(EntityDto<Guid> input);
     }

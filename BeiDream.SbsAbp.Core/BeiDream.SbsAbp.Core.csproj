@@ -6,13 +6,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Localization\SourceFiles\SbsAbp-zh-Hans.xml" />
-    <None Remove="Localization\SourceFiles\SbsAbp.xml" />
+    <None Remove="Common\Localization\SourceFiles\SbsAbp-zh-Hans.xml" />
+    <None Remove="Common\Localization\SourceFiles\SbsAbp.xml" />
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Localization\SourceFiles\SbsAbp-zh-Hans.xml" />
-    <EmbeddedResource Include="Localization\SourceFiles\SbsAbp.xml" />
+    <EmbeddedResource Include="Common\Localization\SourceFiles\SbsAbp-zh-Hans.xml" />
+    <EmbeddedResource Include="Common\Localization\SourceFiles\SbsAbp.xml" />
   </ItemGroup>
 
   <ItemGroup>

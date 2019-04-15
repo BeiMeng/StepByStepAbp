@@ -6,7 +6,7 @@ using System.Text;
 
 namespace BeiDream.SbsAbp.Zero.Menus.Dto
 {
-    public class MenuDto:EntityDto<Guid?>
+    public class MenuTreeDto : EntityDto<Guid>
     {
         public virtual Guid? ParentId { get; set; }
 
@@ -60,5 +60,7 @@ namespace BeiDream.SbsAbp.Zero.Menus.Dto
         /// tab页签显示时配置页签是否显示关闭按钮
         /// </summary>
         public virtual bool NotClose { get; set; }
+
+        public List<MenuTreeDto> Children { get; set; }
     }
 }

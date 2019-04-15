@@ -4,7 +4,7 @@ using Abp.Localization.Dictionaries.Xml;
 using Abp.Reflection.Extensions;
 using BeiDream.SbsAbp;
 
-namespace BeiDream.Vue.Localization
+namespace BeiDream.SbsAbp.Localization
 {
     public static class SbsAbpLocalizationConfigurer
     {

@@ -18,6 +18,8 @@ namespace BeiDream.SbsAbp.Zero.Authorization
             var users = demo.CreateChildPermission(ZeroPermissionNames.ZeroPages_Users, L("用户管理"));
 
             var roles = demo.CreateChildPermission(ZeroPermissionNames.ZeroPages_Roles, L("角色管理"));
+
+            var menuTree = demo.CreateChildPermission(ZeroPermissionNames.ZeroPages_MenusTree, L("菜单管理"));
         }
         private static ILocalizableString L(string name)
         {

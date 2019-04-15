@@ -19,6 +19,8 @@ namespace BeiDream.SbsAbp.Demo.Authorization
             demoTasks.CreateChildPermission(DemoPermissionNames.DemoPages_DemoTasks_Create, L("新增任务"));
             demoTasks.CreateChildPermission(DemoPermissionNames.DemoPages_DemoTasks_Edit, L("编辑任务"));
             demoTasks.CreateChildPermission(DemoPermissionNames.DemoPages_DemoTasks_Delete, L("删除任务"));
+
+            var crudDemo = demo.CreateChildPermission(DemoPermissionNames.DemoPages_CrudDemo, L("crud示例"));
         }
         private static ILocalizableString L(string name)
         {

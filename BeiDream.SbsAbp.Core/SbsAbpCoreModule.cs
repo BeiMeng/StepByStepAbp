@@ -1,16 +1,19 @@
-﻿using Abp.AutoMapper;
+﻿using Abp.Application.Navigation;
+using Abp.AutoMapper;
 using Abp.GeneralTree;
 using Abp.Modules;
 using Abp.Reflection.Extensions;
+using Abp.Configuration.Startup;
 using Abp.Zero;
 using Abp.Zero.Configuration;
+using BeiDream.SbsAbp.Localization;
 using BeiDream.SbsAbp.Zero.Authorization.Roles;
 using BeiDream.SbsAbp.Zero.Authorization.Users;
 using BeiDream.SbsAbp.Zero.MultiTenancy;
-using BeiDream.Vue.Localization;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using BeiDream.SbsAbp.Navigation;
 
 namespace BeiDream.SbsAbp
 {
@@ -37,6 +40,8 @@ namespace BeiDream.SbsAbp
             // Configure roles
             //AppRoleConfig.Configure(Configuration.Modules.Zero().RoleManagement);
 
+            //使用自定义的菜单管理
+            Configuration.ReplaceService<INavigationManager, BeiDreamNavigationManager>();
         }
         public override void Initialize()
         {
