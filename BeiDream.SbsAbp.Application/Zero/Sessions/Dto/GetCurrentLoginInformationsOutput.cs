@@ -9,5 +9,6 @@ namespace BeiDream.SbsAbp.Zero.Sessions.Dto
         public UserLoginInfoDto User { get; set; }
 
         public TenantLoginInfoDto Tenant { get; set; }
+        public ThemeLoginInfoDto Theme { get; set; }
     }
 }

@@ -14,6 +14,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using BeiDream.SbsAbp.Navigation;
+using BeiDream.SbsAbp.Common.AppSetting;
 
 namespace BeiDream.SbsAbp
 {
@@ -33,6 +34,9 @@ namespace BeiDream.SbsAbp
             Configuration.Modules.Zero().EntityTypes.User = typeof(User);
 
             SbsAbpLocalizationConfigurer.Configure(Configuration.Localization);
+
+            //添加Theme Setting
+            Configuration.Settings.Providers.Add<AppSettingProvider>();
 
             // Enable this line to create a multi-tenant application.
             Configuration.MultiTenancy.IsEnabled = SbsAbpConsts.MultiTenancyEnabled;
