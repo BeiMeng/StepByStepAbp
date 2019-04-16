@@ -24,6 +24,8 @@ namespace BeiDream.SbsAbp.Navigation
             public const string ZeroPages_Roles = "ZeroPages.Roles";
 
             public const string ZeroPages_MenusTree = "ZeroPages.MenusTree";
+
+            public const string ZeroPages_ThemeSetting = "ZeroPages.ThemeSetting";
         }
     }
 }

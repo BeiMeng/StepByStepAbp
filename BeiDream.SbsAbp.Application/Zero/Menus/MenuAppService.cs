@@ -4,14 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Abp.Application.Services.Dto;
+using Abp.Authorization;
 using Abp.Domain.Repositories;
 using Abp.GeneralTree;
 using Abp.Runtime.Session;
+using BeiDream.SbsAbp.Zero.Authorization;
 using BeiDream.SbsAbp.Zero.Menus.Dto;
 using Microsoft.EntityFrameworkCore;
 
 namespace BeiDream.SbsAbp.Zero.Menus
 {
+    [AbpAuthorize(ZeroPermissionNames.ZeroPages_MenusTree)]
     public class MenuAppService : SbsAbpAppServiceBase, IMenuAppService
     {
         private readonly IRepository<Menu, Guid> _menuRepository;
@@ -50,6 +53,7 @@ namespace BeiDream.SbsAbp.Zero.Menus
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
+        [AbpAuthorize(ZeroPermissionNames.ZeroPages_MenusTree_Create, ZeroPermissionNames.ZeroPages_MenusTree_Edit)]
         public async Task<MenuDto> GetMenuForEdit(NullableIdDto<Guid> input)
         {
             var entity = await _menuRepository.GetAsync(input.Id.Value);
@@ -60,6 +64,7 @@ namespace BeiDream.SbsAbp.Zero.Menus
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
+        [AbpAuthorize(ZeroPermissionNames.ZeroPages_MenusTree_Create, ZeroPermissionNames.ZeroPages_MenusTree_Edit)]
         public async Task<MenuDto> CreateOrUpdateMenuForOutput(MenuDto input)
         {
            
@@ -84,6 +89,7 @@ namespace BeiDream.SbsAbp.Zero.Menus
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
+        [AbpAuthorize(ZeroPermissionNames.ZeroPages_MenusTree_Delete)]
         public async  Task DeleteMenu(EntityDto<Guid> input)
         {
             await _menuTreeManager.DeleteAsync(input.Id);

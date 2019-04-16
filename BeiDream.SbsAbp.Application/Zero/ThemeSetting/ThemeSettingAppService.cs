@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using Abp.Authorization;
 using Abp.Configuration;
 using BeiDream.SbsAbp.Common.AppSetting;
+using BeiDream.SbsAbp.Zero.Authorization;
 using BeiDream.SbsAbp.Zero.ThemeSetting.Dto;
 
 namespace BeiDream.SbsAbp.Zero.ThemeSetting
 {
+    [AbpAuthorize(ZeroPermissionNames.ZeroPages_ThemeSetting)]
     public class ThemeSettingAppService : SbsAbpAppServiceBase, IThemeSettingAppService
     {
         protected ISettingManager SettingManager;
