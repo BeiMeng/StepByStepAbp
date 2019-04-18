@@ -1,7 +1,9 @@
 ﻿using Abp.Application.Services;
+using Abp.IdentityFramework;
 using Abp.Runtime.Session;
 using BeiDream.SbsAbp.Zero.Authorization.Users;
 using BeiDream.SbsAbp.Zero.MultiTenancy;
+using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -28,6 +30,12 @@ namespace BeiDream.SbsAbp
         protected virtual Task<Tenant> GetCurrentTenantAsync()
         {
             return TenantManager.GetByIdAsync(AbpSession.GetTenantId());
+        }
+
+
+        protected virtual void CheckErrors(IdentityResult identityResult)
+        {
+            identityResult.CheckErrors(LocalizationManager);
         }
     }
 }

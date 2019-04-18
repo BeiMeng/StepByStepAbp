@@ -9,6 +9,7 @@ using Microsoft.Extensions.Options;
 using BeiDream.SbsAbp.Zero.Authorization.Roles;
 using BeiDream.SbsAbp.Zero.Authorization.Users;
 using BeiDream.SbsAbp.Zero.Authorization;
+using BeiDream.SbsAbp.Demo.Authorization;
 
 namespace BeiDream.SbsAbp.EntityFrameworkCore.Seed.Host
 {
@@ -50,6 +51,13 @@ namespace BeiDream.SbsAbp.EntityFrameworkCore.Seed.Host
                 .Where(p => p.MultiTenancySides.HasFlag(MultiTenancySides.Host) &&
                             !grantedPermissions.Contains(p.Name))
                 .ToList();
+
+            var demoPermissions = PermissionFinder
+                .GetAllPermissions(new DemoAuthorizationProvider())
+                    .Where(p => p.MultiTenancySides.HasFlag(MultiTenancySides.Tenant) &&
+                                !grantedPermissions.Contains(p.Name))
+                    .ToList();
+            permissions.AddRange(demoPermissions);
 
             if (permissions.Any())
             {

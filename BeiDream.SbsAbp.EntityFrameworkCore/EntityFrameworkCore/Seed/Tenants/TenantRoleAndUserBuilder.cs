@@ -75,6 +75,16 @@ namespace BeiDream.SbsAbp.EntityFrameworkCore.Seed.Tenants
                 _context.SaveChanges();
             }
 
+
+            //User role
+
+            var userRole = _context.Roles.IgnoreQueryFilters().FirstOrDefault(r => r.TenantId == _tenantId && r.Name == StaticRoleNames.Tenants.User);
+            if (userRole == null)
+            {
+                _context.Roles.Add(new Role(_tenantId, StaticRoleNames.Tenants.User, StaticRoleNames.Tenants.User) { IsStatic = true, IsDefault = true });
+                _context.SaveChanges();
+            }
+
             // Admin user
 
             var adminUser = _context.Users.IgnoreQueryFilters().FirstOrDefault(u => u.TenantId == _tenantId && u.UserName == AbpUserBase.AdminUserName);
