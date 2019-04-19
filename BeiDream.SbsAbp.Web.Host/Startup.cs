@@ -20,6 +20,7 @@ using Abp.Reflection.Extensions;
 using BeiDream.SbsAbp.Zero.Identity;
 using BeiDream.SbsAbp.Configuration;
 using BeiDream.SbsAbp.Web.Authentication;
+using BeiDream.SbsAbp.Web.Middleware.HandNotFound;
 
 namespace BeiDream.SbsAbp.Web.Host
 {
@@ -119,6 +120,8 @@ namespace BeiDream.SbsAbp.Web.Host
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
             });
+
+            //app.UseHandNotFoundMiddleware();
         }
     }
 }
