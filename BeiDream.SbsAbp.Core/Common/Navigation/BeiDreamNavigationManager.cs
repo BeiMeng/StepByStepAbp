@@ -65,6 +65,8 @@ namespace BeiDream.SbsAbp.Navigation
                     permissionDependency: new SimplePermissionDependency(item.PermissionName),
                     customData: new
                     {
+                        item.Id,
+                        item.PermissionName,
                         item.Group,
                         item.IsHome,
                         item.Default,

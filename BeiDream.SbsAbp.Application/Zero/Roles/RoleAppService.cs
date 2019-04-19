@@ -59,7 +59,7 @@ namespace BeiDream.SbsAbp.Zero.Roles
             return new GetRoleForEditOutput
             {
                 item = roleEditDto,
-                GrantedPermissionNames = grantedPermissions.Select(p => p.Name).ToList()
+                GrantedPermissionNames = grantedPermissions.Where(p=>p.Children.Count==0).Select(p => p.Name).ToList()//只选择叶节点，父节点自动选中
             };
         }
         /// <summary>

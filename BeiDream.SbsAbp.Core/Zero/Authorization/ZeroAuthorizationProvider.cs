@@ -16,12 +16,15 @@ namespace BeiDream.SbsAbp.Zero.Authorization
             var zero = pages.CreateChildPermission(ZeroPermissionNames.ZeroPages, L("系统管理"));
 
             var users = zero.CreateChildPermission(ZeroPermissionNames.ZeroPages_Users, L("用户管理"));
+            users.CreateChildPermission(ZeroPermissionNames.ZeroPages_Users_Create, L("新增用户"));
+            users.CreateChildPermission(ZeroPermissionNames.ZeroPages_Users_Edit, L("编辑用户"));
+            users.CreateChildPermission(ZeroPermissionNames.ZeroPages_Users_Delete, L("删除用户"));
+            users.CreateChildPermission(ZeroPermissionNames.ZeroPages_Users_Permission, L("权限设置"));
 
             var roles = zero.CreateChildPermission(ZeroPermissionNames.ZeroPages_Roles, L("角色管理"));
             roles.CreateChildPermission(ZeroPermissionNames.ZeroPages_Roles_Create, L("新增角色"));
             roles.CreateChildPermission(ZeroPermissionNames.ZeroPages_Roles_Edit, L("编辑角色"));
             roles.CreateChildPermission(ZeroPermissionNames.ZeroPages_Roles_Delete, L("删除角色"));
-            roles.CreateChildPermission(ZeroPermissionNames.ZeroPages_Roles_Permission, L("权限设置"));
 
             var menuTree = zero.CreateChildPermission(ZeroPermissionNames.ZeroPages_MenusTree, L("菜单管理"));
             menuTree.CreateChildPermission(ZeroPermissionNames.ZeroPages_MenusTree_Create, L("新增菜单"));

@@ -20,6 +20,8 @@
     <text name="LogIn" value="登录" />
     
     <text name="LoginFailed" value="登录失败!" />
+
+    <text name="系统管理" value="系统管理" />
     
   </texts>
 </localizationDictionary>

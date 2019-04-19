@@ -14,7 +14,7 @@ namespace BeiDream.SbsAbp.Localization
                 new DictionaryBasedLocalizationSource(SbsAbpConsts.LocalizationSourceName,
                     new XmlEmbeddedFileLocalizationDictionaryProvider(
                         typeof(SbsAbpLocalizationConfigurer).GetAssembly(),
-                        "BeiDream.SbsAbp.Localization.SourceFiles"
+                        "BeiDream.SbsAbp.Common.Localization.SourceFiles"
                     )
                 )
             );
