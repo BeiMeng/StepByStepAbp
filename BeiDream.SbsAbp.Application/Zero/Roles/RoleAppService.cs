@@ -104,6 +104,7 @@ namespace BeiDream.SbsAbp.Zero.Roles
         private async Task UpdateGrantedPermissionsAsync(Role role, List<string> grantedPermissionNames)
         {
             var grantedPermissions = PermissionManager.GetPermissionsFromNamesByValidating(grantedPermissionNames);
+            //todo 判断系统配置权限不能删除
             await _roleManager.SetGrantedPermissionsAsync(role, grantedPermissions);
         }
 
