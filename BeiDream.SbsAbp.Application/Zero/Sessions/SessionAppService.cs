@@ -34,17 +34,13 @@ namespace BeiDream.SbsAbp.Zero.Sessions.Dto
                 output.User = ObjectMapper.Map<UserLoginInfoDto>(await GetCurrentUserAsync());
                 output.Theme = new ThemeLoginInfoDto
                 {
-                    ShowPageTab=Convert.ToBoolean(await GetSettingValueAsync(AppSettingNames.Theme.ShowPageTab)),
-                    ShowHeaderMenus = Convert.ToBoolean(await GetSettingValueAsync(AppSettingNames.Theme.ShowHeaderMenus)),
-                    MaxTabCount = Convert.ToInt32(await GetSettingValueAsync(AppSettingNames.Theme.MaxTabCount))
+                    ShowPageTab=await SettingManager.GetSettingValueAsync<bool>(AppSettingNames.Theme.ShowPageTab),
+                    ShowHeaderMenus = await SettingManager.GetSettingValueAsync<bool>(AppSettingNames.Theme.ShowHeaderMenus),
+                    MaxTabCount = await SettingManager.GetSettingValueAsync<int>(AppSettingNames.Theme.MaxTabCount)
                 };
             }
 
             return output;
-        }
-        private async Task<string> GetSettingValueAsync(string settingName)
-        {
-            return await SettingManager.GetSettingValueAsync(settingName);
         }
     }
 }

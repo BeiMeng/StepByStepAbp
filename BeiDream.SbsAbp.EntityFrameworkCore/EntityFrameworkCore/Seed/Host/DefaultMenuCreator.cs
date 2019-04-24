@@ -29,6 +29,9 @@ namespace BeiDream.SbsAbp.EntityFrameworkCore.Seed.Host
                 dashboardMenu = new Menu
                 {
                     Name = "dashboard",
+                    FullName= "dashboard",
+                    Code="00001",
+                    Level=1,
                     DisplayName = "首页",
                     Url ="/",
                     IconClass = "icon-diamond",
@@ -47,7 +50,10 @@ namespace BeiDream.SbsAbp.EntityFrameworkCore.Seed.Host
                 zeroMenu = new Menu
                 {
                     Name = "zero",
-                    Default=true,
+                    FullName = "zero",
+                    Code = "00002",
+                    Level = 1,
+                    Default =true,
                     DisplayName = "系统管理",
                     IconClass = "icon-diamond",
                     Order = 1,
@@ -59,7 +65,10 @@ namespace BeiDream.SbsAbp.EntityFrameworkCore.Seed.Host
                 var menusTree = new Menu
                 {
                     Name = "menusTree",
-                    Default=true,
+                    FullName = "zero-menusTree",
+                    Code = "00001.00002",
+                    Level = 2,
+                    Default =true,
                     DisplayName = "菜单管理",
                     Url= "/app/zero/menusTree",
                     IconClass = "icon-diamond",

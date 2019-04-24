@@ -34,7 +34,7 @@ namespace BeiDream.SbsAbp.Zero.Menus.Dto
         /// <summary>
         /// 图标样式
         /// </summary>
-        [StringLength(20)]
+        [StringLength(100)]
         public virtual string IconClass { get; set; }
 
         /// <summary>
