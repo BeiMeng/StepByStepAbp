@@ -19,7 +19,9 @@ namespace BeiDream.SbsAbp.EntityFrameworkCore
 
             SbsAbpDbContextConfigurer.Configure(builder, configuration.GetConnectionString(SbsAbpConsts.ConnectionStringName));
 
-            return new SbsAbpDbContext(builder.Options);
+            var dbContext = new SbsAbpDbContext(builder.Options);
+            //dbContext.SuppressAutoSetTenantId = true;
+            return dbContext;
         }
     }
 }

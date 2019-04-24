@@ -29,5 +29,12 @@ namespace BeiDream.SbsAbp.EntityFrameworkCore
             : base(options)
         {
         }
-    }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.ChangeAbpTablePrefix<Tenant, Role, User>("BeiDream");
+            modelBuilder.Entity<DemoTask>().ToTable("BeiDreamDemoTask");
+            modelBuilder.Entity<Menu>().ToTable("BeiDreamMenu");
+        }
+     }
 }
