@@ -73,10 +73,21 @@ namespace BeiDream.SbsAbp.Demo.DemoTasks
         [AbpAuthorize(DemoPermissionNames.DemoPages_DemoTasks_Create, DemoPermissionNames.DemoPages_DemoTasks_Edit)]
         public async Task<GetDemoTaskForEditOutput> GetDemoTaskForEdit(NullableIdDto<Guid> input)
         {
-            var entity = await _demoTaskRepository.GetAsync(input.Id.Value);
-            return new GetDemoTaskForEditOutput {
-                            Item= ObjectMapper.Map<DemoTaskEditDto>(entity)
-                        };
+            if (input.Id.HasValue)
+            {
+                var entity = await _demoTaskRepository.GetAsync(input.Id.Value);
+                return new GetDemoTaskForEditOutput
+                {
+                    Item = ObjectMapper.Map<DemoTaskEditDto>(entity)
+                };
+            }
+            else
+            {
+                return new GetDemoTaskForEditOutput
+                {
+                    Item = new DemoTaskEditDto(),
+                };
+            }
         }
         /// <summary>
         /// 新增或者更新单条数据

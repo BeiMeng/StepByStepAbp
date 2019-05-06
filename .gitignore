@@ -260,3 +260,4 @@ paket-files/
 __pycache__/
 *.pyc
 /BeiDream.SbsAbp.Web.Host/App_Data/Logs
+/BeiDream.SbsAbp.Web.Host/Properties/PublishProfiles
