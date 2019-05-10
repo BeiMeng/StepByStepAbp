@@ -13,6 +13,7 @@ namespace BeiDream.SbsAbp.Zero.Menus.Dto
         /// <summary>
         /// 对应定义的路由Name
         /// </summary>
+        [Required]
         public virtual string Name { get; set; }
         /// <summary>
         /// 对应路由path
@@ -24,11 +25,13 @@ namespace BeiDream.SbsAbp.Zero.Menus.Dto
         /// 显示的名称
         /// </summary>
         [StringLength(50)]
+        [Required]
         public virtual string DisplayName { get; set; }
         /// <summary>
         /// 权限名称
         /// </summary>
         [StringLength(200)]
+        [Required]
         public virtual string PermissionName { get; set; }
 
         /// <summary>

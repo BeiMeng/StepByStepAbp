@@ -33,6 +33,7 @@ namespace BeiDream.SbsAbp.EntityFrameworkCore
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.ChangeAbpTablePrefix<Tenant, Role, User>("BeiDream");
+            modelBuilder.Entity<User>().Property("Surname").IsRequired(false);
             modelBuilder.Entity<DemoTask>().ToTable("BeiDreamDemoTask");
             modelBuilder.Entity<Menu>().ToTable("BeiDreamMenu");
         }

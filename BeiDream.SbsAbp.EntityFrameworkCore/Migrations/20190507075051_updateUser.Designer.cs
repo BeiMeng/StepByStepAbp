@@ -3,14 +3,16 @@ using System;
 using BeiDream.SbsAbp.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BeiDream.SbsAbp.Migrations
 {
     [DbContext(typeof(SbsAbpDbContext))]
-    partial class SbsAbpDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190507075051_updateUser")]
+    partial class updateUser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
