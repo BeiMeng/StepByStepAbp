@@ -1,5 +1,6 @@
 ﻿using Abp.AspNetCore;
 using Abp.AspNetCore.Configuration;
+using Abp.AspNetCore.SignalR;
 using Abp.Modules;
 using Abp.Reflection.Extensions;
 using Abp.Zero.Configuration;
@@ -21,6 +22,7 @@ namespace BeiDream.SbsAbp.Web
     [DependsOn(
         typeof(SbsAbpApplicationModule),
         typeof(SbsAbpEntityFrameworkCoreModule),
+        typeof(AbpAspNetCoreSignalRModule),
          typeof(AbpAspNetCoreModule))]
     public class SbsAbpWebHostModule : AbpModule
     {

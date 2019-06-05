@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\AbpFramework\Abp.AspNetCore.SignalR\Abp.AspNetCore.SignalR.csproj" />
     <ProjectReference Include="..\AbpFramework\Abp.AspNetCore\Abp.AspNetCore.csproj" />
     <ProjectReference Include="..\AbpFramework\Abp.Castle.Log4Net\Abp.Castle.Log4Net.csproj" />
     <ProjectReference Include="..\BeiDream.SbsAbp.Application\BeiDream.SbsAbp.Application.csproj" />

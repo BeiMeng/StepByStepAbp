@@ -21,6 +21,7 @@ using BeiDream.SbsAbp.Zero.Identity;
 using BeiDream.SbsAbp.Configuration;
 using BeiDream.SbsAbp.Web.Authentication;
 using BeiDream.SbsAbp.Web.Middleware.HandNotFound;
+using Abp.AspNetCore.SignalR.Hubs;
 
 namespace BeiDream.SbsAbp.Web.Host
 {
@@ -42,6 +43,9 @@ namespace BeiDream.SbsAbp.Web.Host
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+            
+            services.AddSignalR(options => { options.EnableDetailedErrors = true; });
 
             //身份认证相关注册
             IdentityRegistrar.Register(services);
@@ -103,6 +107,11 @@ namespace BeiDream.SbsAbp.Web.Host
             app.UseStaticFiles();
 
             app.UseAuthentication();
+
+            app.UseSignalR(routes =>
+            {
+                routes.MapHub<AbpCommonHub>("/signalr");
+            });
 
             app.UseMvc(routes =>
             {

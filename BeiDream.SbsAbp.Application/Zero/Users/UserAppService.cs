@@ -21,22 +21,26 @@ using Microsoft.AspNetCore.Identity;
 using BeiDream.SbsAbp.Zero.Authorization.Users;
 using System.Collections.ObjectModel;
 using Abp.Authorization.Users;
+using Abp.Notifications;
 
 namespace BeiDream.SbsAbp.Zero.Users
 {
     [AbpAuthorize(ZeroPermissionNames.ZeroPages_Users)]
     public class UserAppService : SbsAbpAppServiceBase, IUserAppService
     {
+        private readonly INotificationPublisher _notificationPublisher;
         private readonly RoleManager _roleManager;
         private readonly IPasswordHasher<User> _passwordHasher;
         private readonly IEnumerable<IPasswordValidator<User>> _passwordValidators;
         public UserAppService(RoleManager roleManager,
             IEnumerable<IPasswordValidator<User>> passwordValidators,
+            INotificationPublisher notificationPublisher,
             IPasswordHasher<User> passwordHasher)
         {
             _passwordHasher = passwordHasher;
             _passwordValidators = passwordValidators;
             _roleManager = roleManager;
+            _notificationPublisher = notificationPublisher;
         }
         /// <summary>
         /// 获取分页的用户数据
@@ -161,6 +165,13 @@ namespace BeiDream.SbsAbp.Zero.Users
             //Update roles
             CheckErrors(await UserManager.SetRoles(user, input.AssignedRoleNames));
 
+            await _notificationPublisher.PublishAsync(
+                "App.SimpleMessage",
+                new MessageNotificationData("有更新用户信息操作!"),
+                severity: NotificationSeverity.Info,
+                userIds: new[] { user.ToUserIdentifier() }
+                );
+
             return new EntityDto<long>(user.Id);
         }
 
@@ -200,6 +211,8 @@ namespace BeiDream.SbsAbp.Zero.Users
             await CurrentUnitOfWork.SaveChangesAsync(); //To get new user's Id.
 
             return new EntityDto<long>(user.Id);
+
+
         }
         /// <summary>
         /// 根据id删除用户

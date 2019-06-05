@@ -66,7 +66,7 @@ namespace BeiDream.SbsAbp.Web.Host.Controllers
             return new AuthenticateResultModel
             {
                 AccessToken = accessToken,
-                EncryptedAccessToken = GetEncrpyedAccessToken(accessToken),
+                EncryptedAccessToken = GetEncrpyedAccessToken(accessToken),   //给SignalR使用的 token
                 ExpireInSeconds = (int)_configuration.Expiration.TotalSeconds,
                 UserId = loginResult.User.Id
             };
