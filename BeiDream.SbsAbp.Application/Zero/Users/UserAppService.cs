@@ -22,6 +22,7 @@ using BeiDream.SbsAbp.Zero.Authorization.Users;
 using System.Collections.ObjectModel;
 using Abp.Authorization.Users;
 using Abp.Notifications;
+using Abp.BackgroundJobs;
 
 namespace BeiDream.SbsAbp.Zero.Users
 {
@@ -29,18 +30,21 @@ namespace BeiDream.SbsAbp.Zero.Users
     public class UserAppService : SbsAbpAppServiceBase, IUserAppService
     {
         private readonly INotificationPublisher _notificationPublisher;
+        private readonly IBackgroundJobManager _backgroundJobManager;
         private readonly RoleManager _roleManager;
         private readonly IPasswordHasher<User> _passwordHasher;
         private readonly IEnumerable<IPasswordValidator<User>> _passwordValidators;
         public UserAppService(RoleManager roleManager,
             IEnumerable<IPasswordValidator<User>> passwordValidators,
             INotificationPublisher notificationPublisher,
+            IBackgroundJobManager backgroundJobManager,
             IPasswordHasher<User> passwordHasher)
         {
             _passwordHasher = passwordHasher;
             _passwordValidators = passwordValidators;
             _roleManager = roleManager;
             _notificationPublisher = notificationPublisher;
+            _backgroundJobManager = backgroundJobManager;
         }
         /// <summary>
         /// 获取分页的用户数据
@@ -165,13 +169,19 @@ namespace BeiDream.SbsAbp.Zero.Users
             //Update roles
             CheckErrors(await UserManager.SetRoles(user, input.AssignedRoleNames));
 
+            //发生推送消息示例
             await _notificationPublisher.PublishAsync(
                 "App.SimpleMessage",
                 new MessageNotificationData("有更新用户信息操作!"),
                 severity: NotificationSeverity.Info,
                 userIds: new[] { user.ToUserIdentifier() }
                 );
-
+               //执行队列任务示例
+                await _backgroundJobManager.EnqueueAsync<TestJob, TestJobArgs>(new TestJobArgs
+                {
+                   Name=user.Name,
+                   Age=(int)user.Id
+                });
             return new EntityDto<long>(user.Id);
         }
 

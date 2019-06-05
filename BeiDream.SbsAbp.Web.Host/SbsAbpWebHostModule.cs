@@ -1,6 +1,8 @@
 ﻿using Abp.AspNetCore;
 using Abp.AspNetCore.Configuration;
 using Abp.AspNetCore.SignalR;
+using Abp.Hangfire;
+using Abp.Hangfire.Configuration;
 using Abp.Modules;
 using Abp.Reflection.Extensions;
 using Abp.Zero.Configuration;
@@ -23,6 +25,7 @@ namespace BeiDream.SbsAbp.Web
         typeof(SbsAbpApplicationModule),
         typeof(SbsAbpEntityFrameworkCoreModule),
         typeof(AbpAspNetCoreSignalRModule),
+        typeof(AbpHangfireAspNetCoreModule),
          typeof(AbpAspNetCoreModule))]
     public class SbsAbpWebHostModule : AbpModule
     {
@@ -50,6 +53,8 @@ namespace BeiDream.SbsAbp.Web
                 );
 
             ConfigureTokenAuth();
+
+            Configuration.BackgroundJobs.UseHangfire();
         }
         private void ConfigureTokenAuth()
         {

@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Hangfire.MySql.Core" Version="2.2.4" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.0" />
@@ -18,6 +19,7 @@
     <ProjectReference Include="..\AbpFramework\Abp.AspNetCore.SignalR\Abp.AspNetCore.SignalR.csproj" />
     <ProjectReference Include="..\AbpFramework\Abp.AspNetCore\Abp.AspNetCore.csproj" />
     <ProjectReference Include="..\AbpFramework\Abp.Castle.Log4Net\Abp.Castle.Log4Net.csproj" />
+    <ProjectReference Include="..\AbpFramework\Abp.HangFire.AspNetCore\Abp.HangFire.AspNetCore.csproj" />
     <ProjectReference Include="..\BeiDream.SbsAbp.Application\BeiDream.SbsAbp.Application.csproj" />
     <ProjectReference Include="..\BeiDream.SbsAbp.EntityFrameworkCore\BeiDream.SbsAbp.EntityFrameworkCore.csproj" />
   </ItemGroup>

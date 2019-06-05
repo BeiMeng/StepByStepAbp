@@ -22,6 +22,8 @@ using BeiDream.SbsAbp.Configuration;
 using BeiDream.SbsAbp.Web.Authentication;
 using BeiDream.SbsAbp.Web.Middleware.HandNotFound;
 using Abp.AspNetCore.SignalR.Hubs;
+using Hangfire;
+using Hangfire.MySql.Core;
 
 namespace BeiDream.SbsAbp.Web.Host
 {
@@ -44,7 +46,7 @@ namespace BeiDream.SbsAbp.Web.Host
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
-            
+            services.AddHangfire(x => x.UseStorage(new MySqlStorage(_appConfiguration.GetConnectionString("Default"))));
             services.AddSignalR(options => { options.EnableDetailedErrors = true; });
 
             //身份认证相关注册
@@ -112,6 +114,9 @@ namespace BeiDream.SbsAbp.Web.Host
             {
                 routes.MapHub<AbpCommonHub>("/signalr");
             });
+
+            app.UseHangfireDashboard();
+            app.UseHangfireServer();
 
             app.UseMvc(routes =>
             {
