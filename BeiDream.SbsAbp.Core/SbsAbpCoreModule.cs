@@ -15,6 +15,8 @@ using System.Collections.Generic;
 using System.Text;
 using BeiDream.SbsAbp.Navigation;
 using BeiDream.SbsAbp.Common.AppSetting;
+using Abp.Auditing;
+using BeiDream.SbsAbp.Common.Auditing;
 
 namespace BeiDream.SbsAbp
 {
@@ -44,8 +46,12 @@ namespace BeiDream.SbsAbp
             // Configure roles
             //AppRoleConfig.Configure(Configuration.Modules.Zero().RoleManagement);
 
+            //使用自定义的审计日志,添加描述信息
+            Configuration.ReplaceService<IAuditingHelper, BeiDreamAuditingHelper>();
             //使用自定义的菜单管理
             Configuration.ReplaceService<INavigationManager, BeiDreamNavigationManager>();
+
+     
         }
         public override void Initialize()
         {

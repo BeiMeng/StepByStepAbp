@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
@@ -53,6 +54,7 @@ namespace BeiDream.SbsAbp.Web.Host.Controllers
             _identityOptions = identityOptions.Value;
         }
         [HttpPost]
+        [Description("用户登陆")]
         public async Task<AuthenticateResultModel> Authenticate([FromBody]AuthenticateModel model)
         {
             var loginResult = await GetLoginResultAsync(
